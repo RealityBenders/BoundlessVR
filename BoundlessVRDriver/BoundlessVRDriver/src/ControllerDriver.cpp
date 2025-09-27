@@ -1,5 +1,39 @@
 #include "ControllerDriver.h"
 
+using namespace DriverHeaders;
+
+// Conversion functions between OpenVR and Eigen types
+Eigen::Vector3f ToEigen(const HmdVector3_t& v) {
+    return Eigen::Vector3f(v.v[0], v.v[1], v.v[2]);
+}
+
+HmdVector3_t ToOpenVR(const Eigen::Vector3f& v) {
+    HmdVector3_t out;
+    out.v[0] = v.x();
+    out.v[1] = v.y();
+    out.v[2] = v.z();
+    return out;
+}
+
+Eigen::Quaternionf ToEigen(const HmdQuaternion_t& q) {
+    return Eigen::Quaternionf(q.w, q.x, q.y, q.z);
+}
+
+HmdQuaternion_t ToOpenVR(const Eigen::Quaternionf& q) {
+    HmdQuaternion_t out;
+    out.w = q.w();
+    out.x = q.x();
+    out.y = q.y();
+    out.z = q.z();
+    return out;
+}
+
+// Eigen-based pose struct
+struct EigenPose {
+    Eigen::Quaternionf rotation;
+    Eigen::Vector3f position;
+};
+
 EVRInitError ControllerDriver::Activate(uint32_t unObjectId)
 {
 	driverId = unObjectId; //unique ID for your driver
@@ -37,6 +71,7 @@ EVRInitError ControllerDriver::Activate(uint32_t unObjectId)
 	}
 	protocol = tcpServer.getProtocol();
 	protocol->loadPacketLengthsFromJson("packet_lengths.json");
+	protocol->setReadHandler(firmwareReadHandler);
 	
 	return VRInitError_None;
 }
@@ -64,11 +99,34 @@ void ControllerDriver::RunFrame()
 {
 	VRDriverLog()->Log("ControllerDriver::RunFrame() called.");
 
-	//Since we used VRScalarUnits_NormalizedTwoSided as the unit, the range is -1 to 1.
-	VRDriverInput()->UpdateScalarComponent(joystickYHandle, 0.5f, 0); //move forward
-	VRDriverInput()->UpdateScalarComponent(trackpadYHandle, 0.5f, 0); //move foward
-	VRDriverInput()->UpdateScalarComponent(joystickXHandle, 0.0f, 0); //change the value to move sideways
-	VRDriverInput()->UpdateScalarComponent(trackpadXHandle, 0.0f, 0); //change the value to move sideways
+	// Gets stride speed estimate from imu data
+	float strideSpeed = 0.0f; // Placeholder for actual speed calculation
+
+	// Get headset position (3d)
+	EigenPose headsetPose = GetHeadsetPose();
+	Eigen::Vector3f headsetPos = headsetPose.position;
+	// Get headset position (2d)
+	Eigen::Vector2f pos2d = Eigen::Vector2f(headsetPos.x(), headsetPos.z());
+
+	// Gets difference from joystick center
+	Eigen::Vector2f diff = pos2d - joystickCenter;
+	if (diff.norm() > joystickRadius) {
+		// If outside joystick, move joystick center so that headset position is on the perimeter
+		joystickCenter += diff.normalized() * joystickRadius;
+	}
+	else {
+		// If inside deadzone, set difference to zero
+		if (diff.norm() < joystickDeadzone) {
+			diff = Eigen::Vector2f::Zero();
+		}
+	}
+
+	Eigen::Vector2f joystickOuput = diff.norm() * strideSpeed / maxSpeed;
+
+	VRDriverInput()->UpdateScalarComponent(joystickYHandle, jostickOutput.y(), 0);
+	VRDriverInput()->UpdateScalarComponent(trackpadYHandle, joystickOutput.y(), 0);
+	VRDriverInput()->UpdateScalarComponent(joystickXHandle, joystickOutput.x(), 0);
+	VRDriverInput()->UpdateScalarComponent(trackpadXHandle, joystickOutput.x(), 0);
 }
 
 void ControllerDriver::Deactivate()
@@ -100,11 +158,11 @@ void ControllerDriver::DebugRequest(const char* pchRequest, char* pchResponseBuf
 }
 
 // Add this method to access headset pose through driver context
-HmdPose ControllerDriver::GetHeadsetPose()
+EigenPose ControllerDriver::GetHeadsetPose()
 {
-    HmdQuaternion_t headsetRotation = {1, 0, 0, 0}; // Default identity quaternion
-	HmdVector3_t headsetPosition = { 0, 0, 0 };
-    
+    Eigen::Quaternionf headsetRotation(1, 0, 0, 0); // Identity quaternion
+    Eigen::Vector3f headsetPosition(0, 0, 0);
+
     // Access through VRServerDriverHost
     if (VRServerDriverHost())
     {
@@ -125,15 +183,15 @@ HmdPose ControllerDriver::GetHeadsetPose()
                     TrackedDevicePose_t trackedDevicePose;
 					VRServerDriverHost()->GetRawTrackedDevicePoses(0, &trackedDevicePose, 1);
                     // Extract rotation from the pose (this would need proper implementation)
-                    headsetRotation = ExtractQuaternionFromPose(trackedDevicePose.mDeviceToAbsoluteTracking);
-					headsetPosition = ExtractPositionFromPose(trackedDevicePose.mDeviceToAbsoluteTracking);
+                    headsetRotation = ToEigen(ExtractQuaternionFromPose(trackedDevicePose.mDeviceToAbsoluteTracking));
+					headsetPosition = ToEigen(ExtractPositionFromPose(trackedDevicePose.mDeviceToAbsoluteTracking));
                     break;
                 }
             }
         }
     }
 
-	return HmdPose{headsetRotation, headsetPosition};
+	return EigenPose{headsetRotation, headsetPosition};
 }
 
 HmdQuaternion_t ControllerDriver::ExtractQuaternionFromPose(HmdMatrix34_t matrix)
@@ -157,4 +215,25 @@ HmdVector3_t ControllerDriver::ExtractPositionFromPose(HmdMatrix34_t matrix)
 	p.v[1] = matrix.m[1][3];
 	p.v[2] = matrix.m[2][3];
 	return p;
+}
+
+void firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol, Request request) {
+    // Ensures request did not time out
+	
+    // Gets response header
+    uint8_t response = request->GetResponseHeader();
+    //Reads serial packets
+    switch (request->GetHeader()) {
+        case PING: {
+            // Sends acknowledge
+            protocol->writeByte(ACK);
+            protocol->sendAll();
+            break;
+        }
+		case IMU_DATA: {
+			// Send acknowledge
+			protocol->writeByte(ACK);
+			// Process IMU data
+		}
+    }
 }

@@ -78,9 +78,15 @@ void loop() {
 void driverReadHandler(Request request) {
 	// Ensures request did not time out
 	if (request->IsTimedOut())
-	{
-		return;
-	}
+  {
+      if (request->GetHeader() == PING) {
+          std::cout << "Connection request timed out. Trying again" << std::endl;
+          // Sends another ping
+          protocol->writeRequest(PING);
+          protocol->sendAll();
+      }
+      return;
+  }
 	//Reads initial packet header
 	switch (request->GetHeader()) {
 		case PING:
@@ -88,7 +94,10 @@ void driverReadHandler(Request request) {
       if (request->GetResponseHeader() == ACK) {
         Serial.println("Ping acknowledged by server.");
       } else {
-        Serial.println("Unexpected response to ping.");
+        Serial.println("Connection denied.");
+        // Sends another ping
+        protocol->writeRequest(PING);
+        protocol->sendAll();
       }
 			digitalWrite(LED_BUILTIN, HIGH);
 			break;
