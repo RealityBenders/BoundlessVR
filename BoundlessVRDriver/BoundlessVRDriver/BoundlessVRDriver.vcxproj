@@ -45,6 +45,7 @@
     <None Include="resources\driver.vrdrivermanifest" />
     <None Include="resources\game_controller.svg" />
     <None Include="resources\legacy_bindings_boundlessvr.json" />
+    <None Include="src\packet_lengths.json" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\openvr_api.lib" />

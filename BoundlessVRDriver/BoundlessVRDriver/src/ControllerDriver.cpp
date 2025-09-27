@@ -1,4 +1,4 @@
-#include <ControllerDriver.h>
+#include "ControllerDriver.h"
 
 EVRInitError ControllerDriver::Activate(uint32_t unObjectId)
 {
@@ -31,6 +31,13 @@ EVRInitError ControllerDriver::Activate(uint32_t unObjectId)
 	//	ButtonMaskFromId(k_EButton_IndexController_JoyStick);
 	//VRProperties()->SetUint64Property(props, Prop_SupportedButtons_Uint64, availableButtons);
 
+	if(!tcpServer.begin()){
+		VRDriverLog()->Log("ControllerDriver: Failed to start TCP server.");
+		return VRInitError_Driver_Failed;
+	}
+	protocol = tcpServer.getProtocol();
+	protocol->loadPacketLengthsFromJson("packet_lengths.json");
+	
 	return VRInitError_None;
 }
 
@@ -58,8 +65,8 @@ void ControllerDriver::RunFrame()
 	VRDriverLog()->Log("ControllerDriver::RunFrame() called.");
 
 	//Since we used VRScalarUnits_NormalizedTwoSided as the unit, the range is -1 to 1.
-	VRDriverInput()->UpdateScalarComponent(joystickYHandle, 0.95f, 0); //move forward
-	VRDriverInput()->UpdateScalarComponent(trackpadYHandle, 0.95f, 0); //move foward
+	VRDriverInput()->UpdateScalarComponent(joystickYHandle, 0.5f, 0); //move forward
+	VRDriverInput()->UpdateScalarComponent(trackpadYHandle, 0.5f, 0); //move foward
 	VRDriverInput()->UpdateScalarComponent(joystickXHandle, 0.0f, 0); //change the value to move sideways
 	VRDriverInput()->UpdateScalarComponent(trackpadXHandle, 0.0f, 0); //change the value to move sideways
 }
