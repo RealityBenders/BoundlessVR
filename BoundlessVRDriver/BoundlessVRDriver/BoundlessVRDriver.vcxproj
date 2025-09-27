@@ -207,4 +207,12 @@
     <Error Condition="!Exists('..\packages\Eigen3.3.3.9\build\native\Eigen3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Eigen3.3.3.9\build\native\Eigen3.targets'))" />
     <Error Condition="!Exists('..\packages\boost.1.87.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost.1.87.0\build\boost.targets'))" />
   </Target>
+<ItemGroup>
+	<JsonFile Include=".\src\packet_lengths.json" />
+</ItemGroup>
+
+<Target Name="CopyJsonFile" AfterTargets="Build">
+	<Copy SourceFiles="@(JsonFile)"
+			DestinationFolder="$(OutDir)" />
+</Target>
 </Project>

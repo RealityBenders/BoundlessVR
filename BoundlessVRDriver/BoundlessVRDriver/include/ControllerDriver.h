@@ -97,10 +97,10 @@ public:
 
 	EigenPose GetHeadsetPose();
 
-    Eigen::Vector3f ToEigen(const HmdVector3_t& v);
-    HmdVector3_t ToOpenVR(const Eigen::Vector3f& v);
-    Eigen::Quaternionf ToEigen(const HmdQuaternion_t& q);
-    HmdQuaternion_t ToOpenVR(const Eigen::Quaternionf& q);
+    Eigen::Vector3d ToEigen(const HmdVector3_t& v);
+    HmdVector3_t ToOpenVR(const Eigen::Vector3d& v);
+    Eigen::Quaterniond ToEigen(const HmdQuaternion_t& q);
+    HmdQuaternion_t ToOpenVR(const Eigen::Quaterniond& q);
 
 private:
     uint32_t driverId;
@@ -114,11 +114,11 @@ private:
     MinBiTTcpServer tcpServer{"BoundlessVR Controller", 8080};
 
     // Locomotion algorithm parameters for virtual joystick
-    float joystickRadius = 0.3f; // Radius of the virtual joystick in meters
-    float joystickDeadzone = 0.05f; // Deadzone to prevent drift
-    float maxSpeed = 2.0f; // Maximum speed in meters per second
+    double joystickRadius = 0.3; // Radius of the virtual joystick in meters
+    double joystickDeadzone = 0.05; // Deadzone to prevent drift
+    double maxSpeed = 2.0; // Maximum speed in meters per second
     // Joystick center position
-    Eigen::Vector2f joystickCenter = { 0.0f, 0.0f };
+    Eigen::Vector2d joystickCenter = { 0.0, 0.0 };
 
     HmdQuaternion_t ExtractQuaternionFromPose(HmdMatrix34_t matrix);
     HmdVector3_t ExtractPositionFromPose(HmdMatrix34_t matrix);

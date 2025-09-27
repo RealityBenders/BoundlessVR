@@ -1,7 +1,388 @@
 ﻿  ControllerDriver.cpp
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(19,47): warning C4244: 'argument': conversion from 'const double' to 'const float', possible loss of data
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(19,42): warning C4244: 'argument': conversion from 'const double' to 'const float', possible loss of data
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(19,37): warning C4244: 'argument': conversion from 'const double' to 'const float', possible loss of data
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(19,32): warning C4244: 'argument': conversion from 'const double' to 'const float', possible loss of data
-     Creating library C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.lib and object C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.exp
-  BoundlessVRDriver.vcxproj -> C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.dll
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2922,24): error C2061: syntax error: identifier 'IVRProperties'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2936,16): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2936,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2936,30): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2922,70): error C2065: 'pProperties': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2922,55): error C2614: 'vr::CVRHiddenAreaHelpers': illegal member initialization: 'm_pProperties' is not a base or member
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2943,2): error C2065: 'CVRPropertyHelpers': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2943,21): error C2146: syntax error: missing ';' before identifier 'propHelpers'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2943,34): error C2065: 'm_pProperties': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2943,21): error C3861: 'propHelpers': identifier not found
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2944,9): error C2065: 'propHelpers': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2944,34): error C2065: 'propHelpers': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2951,2): error C2065: 'CVRPropertyHelpers': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2951,21): error C2146: syntax error: missing ';' before identifier 'propHelpers'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2951,34): error C2065: 'm_pProperties': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2951,21): error C3861: 'propHelpers': identifier not found
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2954,27): error C2065: 'propHelpers': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2954,52): error C2065: 'propHelpers': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3262,17): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3262,3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3263,3): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3274,22): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3274,3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3275,3): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3286,23): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3286,3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3287,3): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3306,27): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3306,3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3307,3): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3316,16): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3316,3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3317,3): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3351,18): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3351,3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3352,3): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3382,23): error C3646: 'm_propertyHelpers': unknown override specifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3382,3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3386,19): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3386,3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3386,35): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3387,24): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3387,3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3387,46): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3389,27): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3389,3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3389,53): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3390,18): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3390,3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3390,33): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3393,20): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3393,3): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3393,37): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3245,75): error C2665: 'vr::CVRHiddenAreaHelpers::CVRHiddenAreaHelpers': no overloaded function could convert all the argument types
+  (compiling source file 'src/ControllerDriver.cpp')
+      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2937,1):
+      could be 'vr::CVRHiddenAreaHelpers::CVRHiddenAreaHelpers(vr::CVRHiddenAreaHelpers &&)'
+          C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3245,75):
+          'vr::CVRHiddenAreaHelpers::CVRHiddenAreaHelpers(vr::CVRHiddenAreaHelpers &&)': cannot convert argument 1 from 'nullptr' to 'vr::CVRHiddenAreaHelpers &&'
+              C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3245,76):
+              Reason: cannot convert from 'nullptr' to 'vr::CVRHiddenAreaHelpers'
+      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(2937,1):
+      or       'vr::CVRHiddenAreaHelpers::CVRHiddenAreaHelpers(const vr::CVRHiddenAreaHelpers &)'
+          C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3245,75):
+          'vr::CVRHiddenAreaHelpers::CVRHiddenAreaHelpers(const vr::CVRHiddenAreaHelpers &)': cannot convert argument 1 from 'nullptr' to 'const vr::CVRHiddenAreaHelpers &'
+              C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3245,76):
+              Reason: cannot convert from 'nullptr' to 'const vr::CVRHiddenAreaHelpers'
+      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3245,75):
+      while trying to match the argument list '(nullptr)'
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3245,28): error C2614: 'vr::COpenVRDriverContext': illegal member initialization: 'm_propertyHelpers' is not a base or member
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3282,4): error C3861: 'VRPropertiesRaw': identifier not found
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3405,23): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3405,9): error C7525: inline variables require at least '/std:c++17'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3405,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3405,36): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3405,54): error C2059: syntax error: '{'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3405,54): error C2143: syntax error: missing ';' before '{'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3405,54): error C2447: '{': missing function header (old-style formal list?)
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3406,28): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3406,9): error C7525: inline variables require at least '/std:c++17'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3406,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3406,41): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3406,56): error C2059: syntax error: '{'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3406,56): error C2143: syntax error: missing ';' before '{'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3406,56): error C2447: '{': missing function header (old-style formal list?)
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3408,22): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3408,9): error C7525: inline variables require at least '/std:c++17'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3408,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3408,35): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3408,49): error C2059: syntax error: '{'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3408,49): error C2143: syntax error: missing ';' before '{'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3408,49): error C2447: '{': missing function header (old-style formal list?)
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3409,29): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3409,9): error C7525: inline variables require at least '/std:c++17'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3409,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3409,42): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3409,63): error C2059: syntax error: '{'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3409,63): error C2143: syntax error: missing ';' before '{'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3409,63): error C2447: '{': missing function header (old-style formal list?)
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3411,33): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3411,9): error C7525: inline variables require at least '/std:c++17'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3411,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3411,46): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3411,71): error C2059: syntax error: '{'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3411,71): error C2143: syntax error: missing ';' before '{'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3411,71): error C2447: '{': missing function header (old-style formal list?)
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3415,24): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3415,9): error C7525: inline variables require at least '/std:c++17'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3415,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3415,37): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3415,53): error C2059: syntax error: '{'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3415,53): error C2143: syntax error: missing ';' before '{'
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3415,53): error C2447: '{': missing function header (old-style formal list?)
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3422,3): error C2065: 'm_pVRProperties': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3423,3): error C2065: 'm_pVRServerDriverHost': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3425,3): error C2065: 'm_pVRCompositorDriverHost': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3426,3): error C2065: 'm_pVRDriverLog': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3429,3): error C2065: 'm_pVRDriverInput': undeclared identifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\ControllerDriver.h(108,30): error C3646: 'joystickYHandle': unknown override specifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\ControllerDriver.h(108,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\ControllerDriver.h(109,30): error C3646: 'trackpadYHandle': unknown override specifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\ControllerDriver.h(109,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\ControllerDriver.h(110,30): error C3646: 'joystickXHandle': unknown override specifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\ControllerDriver.h(110,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\ControllerDriver.h(111,30): error C3646: 'trackpadXHandle': unknown override specifier
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\ControllerDriver.h(111,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(12,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(13,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(14,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(22,35): error C2511: 'vr::HmdQuaternion_t ControllerDriver::ToOpenVR(const Eigen::Quaterniond &)': overloaded member function not found in 'ControllerDriver'
+      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\ControllerDriver.h(51,7):
+      see declaration of 'ControllerDriver'
+  
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(40,73): error C2065: 'joystickYHandle': undeclared identifier
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(40,90): error C2653: 'EVRScalarType': is not a class or namespace name
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(40,105): error C2065: 'VRScalarType_Absolute': undeclared identifier
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(41,9): error C2653: 'EVRScalarUnits': is not a class or namespace name
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(41,25): error C2065: 'VRScalarUnits_NormalizedTwoSided': undeclared identifier
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(42,73): error C2065: 'trackpadYHandle': undeclared identifier
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(42,90): error C2653: 'EVRScalarType': is not a class or namespace name
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(42,105): error C2065: 'VRScalarType_Absolute': undeclared identifier
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(43,9): error C2653: 'EVRScalarUnits': is not a class or namespace name
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(43,25): error C2065: 'VRScalarUnits_NormalizedTwoSided': undeclared identifier
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(44,73): error C2065: 'joystickXHandle': undeclared identifier
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(44,90): error C2653: 'EVRScalarType': is not a class or namespace name
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(44,105): error C2065: 'VRScalarType_Absolute': undeclared identifier
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(45,9): error C2653: 'EVRScalarUnits': is not a class or namespace name
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(45,25): error C2065: 'VRScalarUnits_NormalizedTwoSided': undeclared identifier
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(46,73): error C2065: 'trackpadXHandle': undeclared identifier
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(46,90): error C2653: 'EVRScalarType': is not a class or namespace name
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(46,105): error C2065: 'VRScalarType_Absolute': undeclared identifier
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(46,105): error C1003: error count exceeds 100; stopping compilation
+  DeviceFactory.cpp
+  DeviceProvider.cpp
+  MinBiTCore.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+  MinBiTTcpServer.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTTcpServer.cpp(30,34): warning C4101: 'e': unreferenced local variable
+  Generating Code...
