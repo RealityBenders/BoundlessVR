@@ -238,11 +238,17 @@ void ControllerDriver::firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol,
             protocol->sendAll();
             break;
         }
-        case IMU_DATA: {
+        case IMU_QUAT: {
             // Send acknowledge
             protocol->writeByte(ACK);
             // Process IMU data
             break;
+        }
+        case IMU_STEP: {
+            // Send acknowledge
+            protocol->writeByte(ACK);
+            // Process IMU step data
+			break;
         }
         default:
             break;
