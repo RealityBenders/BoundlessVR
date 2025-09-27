@@ -1,5 +1,6 @@
 #include <WiFi.h>
 #include <WiFiClient.h>
+#include <Adafruit_BNO08x.h>
 
 // Internal library imports
 #include "DriverHeaders.h"
@@ -13,12 +14,22 @@ using Request = std::shared_ptr<MinBiTCore::Request>;
 const char* ssid = "network";         // Your Wi-Fi network SSID
 const char* password = "password"; // Your Wi-Fi network password
 const char* serverIp = "SERVER_IP_ADDRESS"; // IP address of your TCP server
-const uint16_t serverPort = 8080;       // Port of your TCP server
+const uint16_t serverPort = 8080;       // Port of your TCP 
+
+#define BNO08X_CS 10
+#define BNO08X_INT 9
+#define BNO08X_RESET -1
 
 MinBiTTcpClient client("TcpClient");
 std::shared_ptr<MinBiTCore> protocol;
+Adafruit_BNO08x bno08x(BNO08X_RESET);
+sh2_SensorValue_t sensorValue;
+int lastStepCount = 0;
+int timeSinceLastStep = 0;
+
 
 void driverReadHandler(Request request);
+void setReports(void);
 
 void setup() {
   Serial.begin(115200);
@@ -52,14 +63,97 @@ void setup() {
     return;
   }
   Serial.println("Connected to server!");
-}
 
-void loop() {
   // Send data to the server
   String message = "Hello from ESP32!";
   protocol->writeRequest(PING);
   protocol->sendAll();
   Serial.print("Pinged");
+
+  if (!bno08x.begin_I2C()) {
+    // if (!bno08x.begin_UART(&Serial1)) {  // Requires a device with > 300 byte
+    // UART buffer! if (!bno08x.begin_SPI(BNO08X_CS, BNO08X_INT)) {
+    Serial.println("Failed to find BNO08x chip");
+    while (1) {
+      delay(10);
+    }
+  }
+
+  Serial.println("BNO08x Found!");
+
+   for (int n = 0; n < bno08x.prodIds.numEntries; n++) {
+    Serial.print("Part ");
+    Serial.print(bno08x.prodIds.entry[n].swPartNumber);
+    Serial.print(": Version :");
+    Serial.print(bno08x.prodIds.entry[n].swVersionMajor);
+    Serial.print(".");
+    Serial.print(bno08x.prodIds.entry[n].swVersionMinor);
+    Serial.print(".");
+    Serial.print(bno08x.prodIds.entry[n].swVersionPatch);
+    Serial.print(" Build ");
+    Serial.println(bno08x.prodIds.entry[n].swBuildNumber);
+  }
+
+  setReports();
+
+  Serial.println("Reading events");
+  delay(100);
+
+  timeSinceLastStep = micros();
+}
+
+void setReports(void) {
+  Serial.println("Setting desired reports");
+  if (!bno08x.enableReport(SH2_ROTATION_VECTOR)) {
+    Serial.println("Could not enable rotation vector");
+  }
+  // if (!bno08x.enableReport(SH2_GAME_ROTATION_VECTOR)) {
+  //   Serial.println("Could not enable game rotation vector");
+  // }
+  if (!bno08x.enableReport(SH2_STEP_COUNTER)) {
+    Serial.println("Could not enable step counter");
+  }
+}
+
+void loop() {
+
+  delay(10);
+
+  if (bno08x.wasReset()) {
+    Serial.print("sensor was reset ");
+    setReports();
+  }
+
+  if (!bno08x.getSensorEvent(&sensorValue)) {
+    return;
+  }
+
+  switch (sensorValue.sensorId) {
+    case SH2_ROTATION_VECTOR:
+      protocol->writeRequest(IMU_QUAT);
+      protocol->writeQuaternionf(Eigen::Quaternionf(sensorValue.un.rotationVector.real, sensorValue.un.rotationVector.i, sensorValue.un.rotationVector.j, sensorValue.un.rotationVector.k));
+      protocol->sendAll();
+      break;
+
+    case SH2_GAME_ROTATION_VECTOR:
+      protocol->writeRequest(IMU_QUAT);
+      protocol->writeQuaternionf(Eigen::Quaternionf(sensorValue.un.gameRotationVector.real, sensorValue.un.gameRotationVector.i, sensorValue.un.gameRotationVector.j, sensorValue.un.gameRotationVector.k));
+      protocol->sendAll();
+      break;
+
+    case SH2_STEP_COUNTER:
+      if (sensorValue.un.stepCounter.steps == lastStepCount) {
+        break; // No new steps
+      }
+      lastStepCount = sensorValue.un.stepCounter.steps;
+      uint64_t deltaTime = micros() - timeSinceLastStep;
+      timeSinceLastStep = micros();
+      uint8_t* buffer = (uint8_t*)&deltaTime;
+      protocol->writeRequest(IMU_STEP);
+      protocol->writeBytes(buffer, sizeof(deltaTime));
+      protocol->sendAll();
+      break;
+  }
 
   // Optional: Close and reconnect or handle disconnects
   if (!client.isOpen()) {
@@ -72,7 +166,7 @@ void loop() {
     }
   }
 
-  delay(5000); // Send/receive every 5 seconds
+  delay(10); // Send/receive every 10 milliseconds
 }
 
 void driverReadHandler(Request request) {
@@ -101,13 +195,21 @@ void driverReadHandler(Request request) {
       }
 			digitalWrite(LED_BUILTIN, HIGH);
 			break;
-		case IMU_DATA: {
+		case IMU_QUAT: {
 			// Checks response
       if (request->GetResponseHeader() != ACK) {
-        Serial.println("Unexpected response to IMU data.");
+        Serial.println("Unexpected response to IMU quaternion data.");
         break;
       }
 			break;
 		}
+    case IMU_STEP: {
+      // Checks response
+      if (request->GetResponseHeader() != ACK) {
+        Serial.println("Unexpected response to IMU step data.");
+        break;
+      }
+      break;
+    }
   }
 }

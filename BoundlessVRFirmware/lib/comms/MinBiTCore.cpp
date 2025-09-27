@@ -264,6 +264,13 @@ void MinBiTCore::writeInt16(int16_t data) {
     writeBytes(buffer, sizeof(data));
 }
 
+void MinBiTCore::writeQuaternionf(const Eigen::Quaternionf& quaternion) {
+    // Write a quaternion as four floats (coefficients order).
+    for (int i = 0; i < 4; ++i) {
+        writeFloat(static_cast<float>(quaternion.coeffs()(i)));
+    }
+}
+
 void MinBiTCore::sendAll() {
     // Write the contents of the write buffer as a packet.
     std::lock_guard<std::mutex> lock(dataMutex);

@@ -123,7 +123,7 @@ void ControllerDriver::RunFrame()
 
 	Eigen::Vector2f joystickOuput = diff.norm() * strideSpeed / maxSpeed;
 
-	VRDriverInput()->UpdateScalarComponent(joystickYHandle, jostickOutput.y(), 0);
+	VRDriverInput()->UpdateScalarComponent(joystickYHandle, joystickOutput.y(), 0);
 	VRDriverInput()->UpdateScalarComponent(trackpadYHandle, joystickOutput.y(), 0);
 	VRDriverInput()->UpdateScalarComponent(joystickXHandle, joystickOutput.x(), 0);
 	VRDriverInput()->UpdateScalarComponent(trackpadXHandle, joystickOutput.x(), 0);

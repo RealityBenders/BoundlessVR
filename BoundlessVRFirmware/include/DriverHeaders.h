@@ -6,8 +6,11 @@ namespace DriverHeaders {
 
 	//Pings server to check connection
 	#define PING 0x1 // 0 bytes, 0 byte response
-	// Sends IMU data
-	#define IMU_DATA 0x2 // followed by 12 floats (48 bytes)
+	// Sends IMU quaternion data
+	#define IMU_QUAT 0x2 // followed by 16 bytes (4 floats)
+
+	//Sends IMU step data
+	#define IMU_STEP 0x3 // followed by 8 bytes (1 uint64_t)
 
 	//Headers from server (driver) to client (microcontroller)
 

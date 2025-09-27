@@ -9,8 +9,12 @@
 #include <unordered_map>
 #include <thread>
 #include <queue>
+#include <atomic>
+#include <ArduinoEigenDense.h>
 
 #include "IStream.h"
+
+using namespace Eigen;
 
 class MinBiTCore {
     public:
@@ -108,6 +112,8 @@ class MinBiTCore {
         void writeFloat(float value);
         // Writes a 16 bit integer
         void writeInt16(int16_t data);
+        // Writes quaternion
+        void writeQuaternionf(const Eigen::Quaternionf& quaternion);
         // Writes packet
         void sendAll();
 
