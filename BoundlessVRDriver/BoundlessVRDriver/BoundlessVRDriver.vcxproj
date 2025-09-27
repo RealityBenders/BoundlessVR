@@ -24,8 +24,15 @@
     <ClInclude Include="include\openvr.h" />
     <ClInclude Include="include\openvr_capi.h" />
     <ClInclude Include="include\openvr_driver.h" />
+    <ClInclude Include="src\comms\IStream.h" />
+    <ClInclude Include="src\comms\MinBiTCore.h" />
+    <ClInclude Include="src\comms\MinBiTTcpServer.h" />
+    <ClInclude Include="src\comms\TcpStream.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\comms\MinBiTCore.cpp" />
+    <ClCompile Include="src\comms\MinBiTTcpServer.cpp" />
+    <ClCompile Include="src\comms\TcpStream.cpp" />
     <ClCompile Include="src\ControllerDriver.cpp" />
     <ClCompile Include="src\DeviceFactory.cpp" />
     <ClCompile Include="src\DeviceProvider.cpp" />
@@ -33,6 +40,7 @@
   <ItemGroup>
     <None Include="include\openvr_api.cs" />
     <None Include="include\openvr_api.json" />
+    <None Include="packages.config" />
     <None Include="resources\controller_profile.json" />
     <None Include="resources\driver.vrdrivermanifest" />
     <None Include="resources\game_controller.svg" />
@@ -155,6 +163,8 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -184,5 +194,16 @@
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\boost.1.87.0\build\boost.targets" Condition="Exists('..\packages\boost.1.87.0\build\boost.targets')" />
+    <Import Project="..\packages\nlohmann.json.3.12.0\build\native\nlohmann.json.targets" Condition="Exists('..\packages\nlohmann.json.3.12.0\build\native\nlohmann.json.targets')" />
+    <Import Project="..\packages\Eigen3.3.3.9\build\native\Eigen3.targets" Condition="Exists('..\packages\Eigen3.3.3.9\build\native\Eigen3.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\boost.1.87.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost.1.87.0\build\boost.targets'))" />
+    <Error Condition="!Exists('..\packages\nlohmann.json.3.12.0\build\native\nlohmann.json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nlohmann.json.3.12.0\build\native\nlohmann.json.targets'))" />
+    <Error Condition="!Exists('..\packages\Eigen3.3.3.9\build\native\Eigen3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Eigen3.3.3.9\build\native\Eigen3.targets'))" />
+  </Target>
 </Project>

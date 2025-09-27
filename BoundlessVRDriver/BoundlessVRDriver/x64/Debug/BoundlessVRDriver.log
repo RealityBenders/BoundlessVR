@@ -1,6 +1,21 @@
-﻿  ControllerDriver.cpp
+﻿  MinBiTCore.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+  MinBiTTcpServer.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTTcpServer.cpp(30,34): warning C4101: 'e': unreferenced local variable
+  TcpStream.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+  ControllerDriver.cpp
   DeviceFactory.cpp
   DeviceProvider.cpp
   Generating Code...
-     Creating library C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.lib and object C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.exp
-  BoundlessVRDriver.vcxproj -> C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.dll
+  BoundlessVRDriver.vcxproj -> C:\Users\scmgf\Source\Repos\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.dll

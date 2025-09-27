@@ -565,7 +565,7 @@ Eigen::Vector3d MinBiTCore::readVector3d() {
 
 Eigen::Quaterniond MinBiTCore::readQuaterniond() {
     // Read a quaternion (four floats) from the read buffer.
-    Eigen::Vector<double, 4> coeffs;
+    Eigen::Vector4d coeffs;
     for (uint8_t i = 0; i < 4; ++i) {
         coeffs(i) = readFloat();
     }

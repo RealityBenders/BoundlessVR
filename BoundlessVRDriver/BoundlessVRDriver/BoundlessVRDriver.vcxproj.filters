@@ -30,6 +30,18 @@
     <ClInclude Include="include\DeviceProvider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\comms\MinBiTCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\comms\IStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\comms\MinBiTTcpServer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\comms\TcpStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ControllerDriver.cpp">
@@ -39,6 +51,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\DeviceFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comms\MinBiTCore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comms\MinBiTTcpServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comms\TcpStream.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -51,6 +72,7 @@
     <None Include="resources\game_controller.svg" />
     <None Include="resources\legacy_bindings_boundlessvr.json" />
     <None Include="resources\driver.vrdrivermanifest" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\openvr_api.lib" />
