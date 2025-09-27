@@ -39,5 +39,6 @@ public class GrabbableTrigger : MonoBehaviour
             uiText.text = "You grabbed: " + gameObject.name;
 
 
+
     }
 }
