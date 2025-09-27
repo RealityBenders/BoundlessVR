@@ -15,8 +15,8 @@ using namespace vr;
 using Request = std::shared_ptr<MinBiTCore::Request>;
 
 struct EigenPose {
-    Eigen::Quaternionf rotation;
-    Eigen::Vector3f position;
+    Eigen::Quaterniond rotation;
+    Eigen::Vector3d position;
 };
 
 namespace DriverHeaders {
