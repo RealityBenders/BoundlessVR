@@ -97,10 +97,10 @@ public:
 
 	EigenPose GetHeadsetPose();
 
-    static Eigen::Vector3f ToEigen(const HmdVector3_t& v);
-    static HmdVector3_t ToOpenVR(const Eigen::Vector3f& v);
-    static Eigen::Quaternionf ToEigen(const HmdQuaternion_t& q);
-    static HmdQuaternion_t ToOpenVR(const Eigen::Quaternionf& q);
+    Eigen::Vector3f ToEigen(const HmdVector3_t& v);
+    HmdVector3_t ToOpenVR(const Eigen::Vector3f& v);
+    Eigen::Quaternionf ToEigen(const HmdQuaternion_t& q);
+    HmdQuaternion_t ToOpenVR(const Eigen::Quaternionf& q);
 
 private:
     uint32_t driverId;
@@ -110,17 +110,17 @@ private:
     VRInputComponentHandle_t joystickXHandle;
     VRInputComponentHandle_t trackpadXHandle;
 
-	std::shared_ptr<MinBiTCore> protocol;
-	MinBiTTcpServer tcpServer{"BoundlessVR Controller", 8080};
+    std::vector<std::shared_ptr<MinBiTCore>> protocols; // Changed from single protocol to vector
+    MinBiTTcpServer tcpServer{"BoundlessVR Controller", 8080};
 
-	// Locomotion algorithm parameters for virtual joystick
-	float joystickRadius = 0.3f; // Radius of the virtual joystick in meters
-	float joystickDeadzone = 0.05f; // Deadzone to prevent drift
-	float maxSpeed = 2.0f; // Maximum speed in meters per second
-	// Joystick center position
-	Eigen::Vector2f joystickCenter = { 0.0f, 0.0f };
+    // Locomotion algorithm parameters for virtual joystick
+    float joystickRadius = 0.3f; // Radius of the virtual joystick in meters
+    float joystickDeadzone = 0.05f; // Deadzone to prevent drift
+    float maxSpeed = 2.0f; // Maximum speed in meters per second
+    // Joystick center position
+    Eigen::Vector2f joystickCenter = { 0.0f, 0.0f };
 
-	HmdQuaternion_t ExtractQuaternionFromPose(HmdMatrix34_t matrix);
-	HmdVector3_t ExtractPositionFromPose(HmdMatrix34_t matrix);
-	void firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol, Request request);
+    HmdQuaternion_t ExtractQuaternionFromPose(HmdMatrix34_t matrix);
+    HmdVector3_t ExtractPositionFromPose(HmdMatrix34_t matrix);
+    void firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol, Request request);
 };

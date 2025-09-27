@@ -3,11 +3,11 @@
 using namespace DriverHeaders;
 
 // Conversion functions between OpenVR and Eigen types
-Eigen::Vector3f ToEigen(const HmdVector3_t& v) {
+Eigen::Vector3f ControllerDriver::ToEigen(const HmdVector3_t& v) {
     return Eigen::Vector3f(v.v[0], v.v[1], v.v[2]);
 }
 
-HmdVector3_t ToOpenVR(const Eigen::Vector3f& v) {
+HmdVector3_t ControllerDriver::ToOpenVR(const Eigen::Vector3f& v) {
     HmdVector3_t out;
     out.v[0] = v.x();
     out.v[1] = v.y();
@@ -15,24 +15,19 @@ HmdVector3_t ToOpenVR(const Eigen::Vector3f& v) {
     return out;
 }
 
-Eigen::Quaternionf ToEigen(const HmdQuaternion_t& q) {
+Eigen::Quaternionf ControllerDriver::ToEigen(const HmdQuaternion_t& q) {
     return Eigen::Quaternionf(q.w, q.x, q.y, q.z);
 }
 
-HmdQuaternion_t ToOpenVR(const Eigen::Quaternionf& q) {
+HmdQuaternion_t ControllerDriver::ToOpenVR(const Eigen::Quaternionf& q) {
     HmdQuaternion_t out;
     out.w = q.w();
     out.x = q.x();
     out.y = q.y();
     out.z = q.z();
-    return out;
-}
 
-// Eigen-based pose struct
-struct EigenPose {
-    Eigen::Quaternionf rotation;
-    Eigen::Vector3f position;
-};
+	return out;
+}
 
 EVRInitError ControllerDriver::Activate(uint32_t unObjectId)
 {
@@ -69,9 +64,16 @@ EVRInitError ControllerDriver::Activate(uint32_t unObjectId)
 		VRDriverLog()->Log("ControllerDriver: Failed to start TCP server.");
 		return VRInitError_Driver_Failed;
 	}
-	protocol = tcpServer.getProtocol();
-	protocol->loadPacketLengthsFromJson("packet_lengths.json");
-	protocol->setReadHandler(firmwareReadHandler);
+	// Get all protocol pointers from the server
+	protocols = tcpServer.getProtocols();
+	// Set up each protocol
+	for (auto& protocol : protocols) {
+		protocol->loadPacketLengthsFromJson("packet_lengths.json");
+		// Use a lambda to bind the member function
+		protocol->setReadHandler([this, protocol](std::shared_ptr<MinBiTCore::Request> request) {
+			this->firmwareReadHandler(protocol, request);
+		});
+	}
 	
 	return VRInitError_None;
 }
@@ -121,12 +123,18 @@ void ControllerDriver::RunFrame()
 		}
 	}
 
-	Eigen::Vector2f joystickOuput = diff.norm() * strideSpeed / maxSpeed;
+	Eigen::Vector2f joystickOutput = diff * (strideSpeed / maxSpeed);
 
-	VRDriverInput()->UpdateScalarComponent(joystickYHandle, jostickOutput.y(), 0);
-	VRDriverInput()->UpdateScalarComponent(trackpadYHandle, joystickOutput.y(), 0);
-	VRDriverInput()->UpdateScalarComponent(joystickXHandle, joystickOutput.x(), 0);
-	VRDriverInput()->UpdateScalarComponent(trackpadXHandle, joystickOutput.x(), 0);
+	// Update all protocol instances if needed (example: send joystick data)
+    for (auto& protocol : protocols) {
+        // Example: protocol->writeVector2f(joystickOutput); // if such a method exists
+        // protocol->sendAll();
+    }
+
+    VRDriverInput()->UpdateScalarComponent(joystickYHandle, joystickOutput.y(), 0);
+    VRDriverInput()->UpdateScalarComponent(trackpadYHandle, joystickOutput.y(), 0);
+    VRDriverInput()->UpdateScalarComponent(joystickXHandle, joystickOutput.x(), 0);
+    VRDriverInput()->UpdateScalarComponent(trackpadXHandle, joystickOutput.x(), 0);
 }
 
 void ControllerDriver::Deactivate()
@@ -217,7 +225,7 @@ HmdVector3_t ControllerDriver::ExtractPositionFromPose(HmdMatrix34_t matrix)
 	return p;
 }
 
-void firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol, Request request) {
+void ControllerDriver::firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol, Request request) {
     // Ensures request did not time out
 	
     // Gets response header
@@ -234,6 +242,9 @@ void firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol, Request request) 
 			// Send acknowledge
 			protocol->writeByte(ACK);
 			// Process IMU data
+			break;
 		}
+		default:
+			break;
     }
 }
