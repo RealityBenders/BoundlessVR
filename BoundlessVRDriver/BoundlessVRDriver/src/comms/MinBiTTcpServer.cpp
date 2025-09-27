@@ -1,4 +1,5 @@
 #include "MinBiTTcpServer.h"
+#include <openvr_driver.h>
 
 MinBiTTcpServer::MinBiTTcpServer(std::string name, unsigned short port)
     : name(name), listenPort(port)
@@ -37,6 +38,15 @@ void MinBiTTcpServer::acceptClients() {
     auto socket = std::make_shared<boost::asio::ip::tcp::socket>(ioContext);
     acceptor->async_accept(*socket, [this, socket](const boost::system::error_code& ec) {
         if (!ec && running) {
+            std::string clientIp;
+            try {
+                clientIp = socket->remote_endpoint().address().to_string();
+            } catch (const std::exception&) {
+                clientIp = "Unknown";
+            }
+            // Log client connection with IP using OpenVR logging
+            std::string logMsg = "Client connected: " + clientIp;
+            VRDriverLog()->Log(logMsg.c_str());
             int clientId = nextClientId++;
             auto tcpStream = std::make_shared<TcpStream>(socket);
             auto protocol = std::make_shared<MinBiTCore>(name, tcpStream);
