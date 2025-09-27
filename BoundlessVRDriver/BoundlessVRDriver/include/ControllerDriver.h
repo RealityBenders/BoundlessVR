@@ -5,7 +5,6 @@
 #include <windows.h>
 #include <openvr_driver.h>
 #include <memory>
-#include <Eigen/Geometry>
 #include <Eigen/Dense>
 
 #include "comms/MinBiTCore.h"
