@@ -4,6 +4,9 @@
 #include <memory>
 #include <string>
 #include <thread>
+#include <vector>
+#include <map>
+#include <mutex>
 #include <boost/asio.hpp>
 #include "TcpStream.h"
 #include "MinBiTCore.h"
@@ -15,34 +18,39 @@ public:
     MinBiTTcpServer(std::string name, unsigned short port);
     ~MinBiTTcpServer();
 
-    // Start listening for a client connection
+    // Start listening for client connections
     bool begin();
 
-    // Stop the server and close the connection
+    // Stop the server and close all connections
     void end();
-
-    // Get the MinBiTCore protocol object
-    std::shared_ptr<MinBiTCore> getProtocol();
-
-    // Check if a client is connected
-    bool isConnected() const;
 
     // Set the user read handler
     void setReadHandler(ReadHandler handler);
+
+    // Get all active protocols
+    std::vector<std::shared_ptr<MinBiTCore>> getProtocols();
+
+    // Check if any client is connected
+    bool isConnected() const;
 
 private:
     std::string name;
     boost::asio::io_context ioContext;
     std::unique_ptr<boost::asio::ip::tcp::acceptor> acceptor;
-    std::shared_ptr<TcpStream> tcpStream;
-    std::shared_ptr<MinBiTCore> protocol;
-    std::thread ioThread;
-    bool connected = false;
     unsigned short listenPort;
     ReadHandler readHandler;
+    std::vector<std::thread> workerThreads;
+    std::map<int, std::shared_ptr<TcpStream>> clientStreams;
+    std::map<int, std::shared_ptr<MinBiTCore>> clientProtocols;
+    std::mutex clientMutex;
+    std::atomic<int> nextClientId{0};
+    std::thread ioThread;
+    bool running = false;
 
-    // Attach protocol and start async read loop
-    void attachProtocol();
+    // Accept clients in a loop
+    void acceptClients();
+    // Worker thread for each client
+    void clientWorker(int clientId);
 };
 
 #endif // MINBIT_TCP_SERVER_H

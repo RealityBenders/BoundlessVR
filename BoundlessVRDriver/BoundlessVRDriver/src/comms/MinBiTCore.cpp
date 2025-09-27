@@ -310,14 +310,14 @@ void MinBiTCore::writeInt16(int16_t data) {
     writeBytes(buffer, sizeof(data));
 }
 
-void MinBiTCore::writeVector3d(const Eigen::Vector3d& vector) {
+void MinBiTCore::writeVector3f(const Eigen::Vector3f& vector) {
     // Write a 3D vector as three floats.
     for (int i = 0; i < 3; ++i) {
         writeFloat(static_cast<float>(vector(i)));
     }
 }
 
-void MinBiTCore::writeQuaterniond(const Eigen::Quaterniond& quaternion) {
+void MinBiTCore::writeQuaternionf(const Eigen::Quaternionf& quaternion) {
     // Write a quaternion as four floats (coefficients order).
     for (int i = 0; i < 4; ++i) {
         writeFloat(static_cast<float>(quaternion.coeffs()(i)));

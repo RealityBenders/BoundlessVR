@@ -5,16 +5,36 @@
 #include <windows.h>
 #include <openvr_driver.h>
 #include <memory>
+#include <Eigen/Geometry>
+#include <Eigen/Dense>
 
 #include "comms/MinBiTCore.h"
 #include "comms/MinBiTTcpServer.h"
 
 using namespace vr;
 
-struct HmdPose {
-	HmdQuaternion_t rotation;
-	HmdVector3_t position;
+using Request = std::shared_ptr<MinBiTCore::Request>;
+
+struct EigenPose {
+    Eigen::Quaternionf rotation;
+    Eigen::Vector3f position;
 };
+
+namespace DriverHeaders {
+	//Headers from client (microcontroller) to server (driver)
+
+	//Pings server to check connection
+	#define PING 0x1 // 0 bytes, 0 byte response
+	// Sends IMU data
+	#define IMU_DATA 0x2 // followed by 12 floats (48 bytes)
+
+	//Headers from server (driver) to client (microcontroller)
+
+	//Acknowledge   
+	#define ACK 0x1 // followed by response data
+	//No acknowledge
+	#define NACK 0x2 // 0 bytes
+}
 
 /**
 This class controls the behavior of the controller. This is where you 
@@ -76,6 +96,13 @@ public:
 	**/
 	void RunFrame();
 
+	EigenPose GetHeadsetPose();
+
+    static Eigen::Vector3f ToEigen(const HmdVector3_t& v);
+    static HmdVector3_t ToOpenVR(const Eigen::Vector3f& v);
+    static Eigen::Quaternionf ToEigen(const HmdQuaternion_t& q);
+    static HmdQuaternion_t ToOpenVR(const Eigen::Quaternionf& q);
+
 private:
     uint32_t driverId;
 
@@ -87,7 +114,14 @@ private:
 	std::shared_ptr<MinBiTCore> protocol;
 	MinBiTTcpServer tcpServer{"BoundlessVR Controller", 8080};
 
+	// Locomotion algorithm parameters for virtual joystick
+	float joystickRadius = 0.3f; // Radius of the virtual joystick in meters
+	float joystickDeadzone = 0.05f; // Deadzone to prevent drift
+	float maxSpeed = 2.0f; // Maximum speed in meters per second
+	// Joystick center position
+	Eigen::Vector2f joystickCenter = { 0.0f, 0.0f };
+
 	HmdQuaternion_t ExtractQuaternionFromPose(HmdMatrix34_t matrix);
 	HmdVector3_t ExtractPositionFromPose(HmdMatrix34_t matrix);
-	HmdPose GetHeadsetPose();
+	void firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol, Request request);
 };

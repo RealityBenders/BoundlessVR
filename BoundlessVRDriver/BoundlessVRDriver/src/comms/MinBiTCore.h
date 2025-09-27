@@ -118,9 +118,9 @@ class MinBiTCore {
         // Writes a 16 bit integer
         void writeInt16(int16_t data);
         // Writes 3d vector
-		void writeVector3d(const Eigen::Vector3d& vector);
+		void writeVector3f(const Eigen::Vector3f& vector);
 		// Writes quaterniond
-		void writeQuaterniond(const Eigen::Quaterniond& quaternion);
+		void writeQuaternionf(const Eigen::Quaternionf& quaternion);
         // Writes packet
         void sendAll();
 

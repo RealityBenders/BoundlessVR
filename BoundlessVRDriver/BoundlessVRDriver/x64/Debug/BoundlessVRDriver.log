@@ -1,2 +1,25 @@
-﻿  ControllerDriver.cpp
-  BoundlessVRDriver.vcxproj -> C:\Users\scmgf\Source\Repos\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.dll
+﻿  MinBiTCore.cpp
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\packages\Eigen3.3.3.9\lib\native\include\Eigen\Dense(1,10): error C1083: Cannot open include file: 'Core': No such file or directory
+  (compiling source file 'src/comms/MinBiTCore.cpp')
+  
+  MinBiTTcpServer.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\packages\Eigen3.3.3.9\lib\native\include\Eigen\Dense(1,10): error C1083: Cannot open include file: 'Core': No such file or directory
+  (compiling source file 'src/comms/MinBiTTcpServer.cpp')
+  
+  ControllerDriver.cpp
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\packages\Eigen3.3.3.9\lib\native\include\Eigen\Geometry(11,10): error C1083: Cannot open include file: 'Core': No such file or directory
+  (compiling source file 'src/ControllerDriver.cpp')
+  
+  DeviceFactory.cpp
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\packages\Eigen3.3.3.9\lib\native\include\Eigen\Geometry(11,10): error C1083: Cannot open include file: 'Core': No such file or directory
+  (compiling source file 'src/DeviceFactory.cpp')
+  
+  DeviceProvider.cpp
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\packages\Eigen3.3.3.9\lib\native\include\Eigen\Geometry(11,10): error C1083: Cannot open include file: 'Core': No such file or directory
+  (compiling source file 'src/DeviceProvider.cpp')
+  
+  Generating Code...
