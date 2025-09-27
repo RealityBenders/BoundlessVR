@@ -1,87 +1,12 @@
-﻿  MinBiTCore.cpp
-  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
-  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
-  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
-  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTCore.cpp(205,9): error C3861: 'VRDriverLog': identifier not found
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTCore.cpp(352,17): error C3861: 'VRDriverLog': identifier not found
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTCore.cpp(355,17): error C3861: 'VRDriverLog': identifier not found
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTCore.cpp(369,13): error C3861: 'VRDriverLog': identifier not found
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTCore.cpp(411,13): error C3861: 'VRDriverLog': identifier not found
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTCore.cpp(422,17): error C3861: 'VRDriverLog': identifier not found
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTCore.cpp(425,17): error C3861: 'VRDriverLog': identifier not found
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTCore.cpp(506,17): error C3861: 'VRDriverLog': identifier not found
-  MinBiTTcpServer.cpp
-  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
-  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
-  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
-  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTTcpServer.cpp(30,34): warning C4101: 'e': unreferenced local variable
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTTcpServer.cpp(49,13): error C3861: 'VRDriverLog': identifier not found
-  TcpStream.cpp
-  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
-  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
-  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
-  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
-  ControllerDriver.cpp
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(19,47): warning C4244: 'argument': conversion from 'const double' to 'const float', possible loss of data
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(19,42): warning C4244: 'argument': conversion from 'const double' to 'const float', possible loss of data
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(19,37): warning C4244: 'argument': conversion from 'const double' to 'const float', possible loss of data
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(19,32): warning C4244: 'argument': conversion from 'const double' to 'const float', possible loss of data
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(32,8): error C2011: 'EigenPose': 'struct' type redefinition
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\ControllerDriver.h(17,8):
-      see declaration of 'EigenPose'
-  
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(72,23): error C2039: 'getProtocol': is not a member of 'MinBiTTcpServer'
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTTcpServer.h(14,7):
-      see declaration of 'MinBiTTcpServer'
-  
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(74,27): error C3867: 'ControllerDriver::firmwareReadHandler': non-standard syntax; use '&' to create a pointer to member
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(106,12): error C2079: 'headsetPose' uses undefined struct 'EigenPose'
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(106,26): error C2027: use of undefined type 'EigenPose'
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\ControllerDriver.h(17,8):
-      see declaration of 'EigenPose'
-  
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(124,32): error C2440: 'initializing': cannot convert from 'float' to 'Eigen::Matrix<float,2,1,0,2,1>'
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(124,32):
-      Constructor for class 'Eigen::Matrix<float,2,1,0,2,1>' is declared 'explicit'
-  
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(126,58): error C2065: 'jostickOutput': undeclared identifier
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(126,19): error C2660: 'vr::IVRDriverInput::UpdateScalarComponent': function does not take 2 arguments
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3394,25):
-      see declaration of 'vr::IVRDriverInput::UpdateScalarComponent'
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(126,19):
-      while trying to match the argument list '(vr::VRInputComponentHandle_t, int)'
-  
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(127,58): error C2065: 'joystickOutput': undeclared identifier
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(127,19): error C2660: 'vr::IVRDriverInput::UpdateScalarComponent': function does not take 2 arguments
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3394,25):
-      see declaration of 'vr::IVRDriverInput::UpdateScalarComponent'
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(127,19):
-      while trying to match the argument list '(vr::VRInputComponentHandle_t, int)'
-  
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(128,58): error C2065: 'joystickOutput': undeclared identifier
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(128,19): error C2660: 'vr::IVRDriverInput::UpdateScalarComponent': function does not take 2 arguments
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3394,25):
-      see declaration of 'vr::IVRDriverInput::UpdateScalarComponent'
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(128,19):
-      while trying to match the argument list '(vr::VRInputComponentHandle_t, int)'
-  
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(129,58): error C2065: 'joystickOutput': undeclared identifier
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(129,19): error C2660: 'vr::IVRDriverInput::UpdateScalarComponent': function does not take 2 arguments
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\openvr_driver.h(3394,25):
-      see declaration of 'vr::IVRDriverInput::UpdateScalarComponent'
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(129,19):
-      while trying to match the argument list '(vr::VRInputComponentHandle_t, int)'
-  
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(161,29): error C2027: use of undefined type 'EigenPose'
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\ControllerDriver.h(17,8):
-      see declaration of 'EigenPose'
-  
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(194,18): error C2027: use of undefined type 'EigenPose'
-      C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\include\ControllerDriver.h(17,8):
-      see declaration of 'EigenPose'
-  
+﻿  ControllerDriver.cpp
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(12,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(13,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(14,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(134,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(135,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(136,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(137,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   DeviceFactory.cpp
   DeviceProvider.cpp
   Generating Code...
+  BoundlessVRDriver.vcxproj -> C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.dll

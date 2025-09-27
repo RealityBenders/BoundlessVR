@@ -1,11 +1,8 @@
 #include "MinBiTCore.h"
-#include <openvr_driver.h>
 
+using namespace vr;
 using namespace boost;
 using json = nlohmann::json;
-
-#define LOG_ERROR(msg) VRDriverLog()->Log((msg))
-#define LOG_INFO(msg) VRDriverLog()->Log((msg))
 
 std::atomic<int64_t> MinBiTCore::Request::nextId{ 1 };
 
@@ -202,7 +199,7 @@ bool MinBiTCore::loadPacketLengthsFromJson(const std::string& filePath) {
         return true;
     }
     catch (std::exception e) {
-        LOG_ERROR("File not found");
+        VRDriverLog()->Log("File not found");
         return false;
     }
 }
@@ -349,10 +346,10 @@ void MinBiTCore::sendAll() {
     stream->asyncWrite(writeBuffer.data(), trueBufferSize,
         [this, trueBufferSize](const boost::system::error_code& error, std::size_t bytesTransferred) {
             if (error) {
-                LOG_ERROR("(" + name + ") Error writing bytes: " + error.message());
+                VRDriverLog()->Log(("(" + name + ") Error writing bytes: " + error.message()).c_str());
             }
             else if (bytesTransferred < trueBufferSize) {
-                LOG_ERROR("(" + name + ") Partial write detected. Ensure all bytes are written.");
+                VRDriverLog()->Log(("(" + name + ") Partial write detected. Ensure all bytes are written.").c_str());
             }
         });
 
@@ -366,7 +363,7 @@ void MinBiTCore::checkForTimeouts() {
         auto now = std::chrono::steady_clock::now();
 
         if (std::chrono::duration_cast<std::chrono::milliseconds>(now - req->GetSentTime()).count() > requestTimeoutMs) {
-            LOG_ERROR("(" + name + ") Outgoing request with header " + std::to_string(int(req->GetHeader())) + " timed out after " + std::to_string(requestTimeoutMs) + " ms.");
+            VRDriverLog()->Log(("(" + name + ") Outgoing request with header " + std::to_string(int(req->GetHeader())) + " timed out after " + std::to_string(requestTimeoutMs) + " ms.").c_str());
             req->SetStatus(Request::Status::TIMEDOUT);
             if (currRequest != nullptr && currRequest->IsOutgoing()) {
                 clearRequest();
@@ -408,7 +405,7 @@ bool MinBiTCore::characterizePacket() {
         }
         else {
             // Header is unknown
-            LOG_ERROR("(" + name + ") No packet found for received header " + std::to_string(int(receivedHeader)));
+            VRDriverLog()->Log(("(" + name + ") No packet found for received header " + std::to_string(int(receivedHeader))).c_str());
 
             clearRequest();
             flush();
@@ -419,10 +416,10 @@ bool MinBiTCore::characterizePacket() {
         int16_t expectedLength = 0;
         if (!getExpectedPacketLength(currRequest, expectedLength)) {
             if (currRequest->IsOutgoing()) {
-                LOG_ERROR("(" + name + ") No response length found for outgoing request header " + std::to_string(int(currRequest->GetHeader())));
+                VRDriverLog()->Log(("(" + name + ") No response length found for outgoing request header " + std::to_string(int(currRequest->GetHeader()))).c_str());
             }
             else {
-                LOG_ERROR("(" + name + ") No packet length found for incoming request header " + std::to_string(int(currRequest->GetHeader())));
+                VRDriverLog()->Log(("(" + name + ") No packet length found for incoming request header " + std::to_string(int(currRequest->GetHeader()))).c_str());
             }
 
             clearRequest();
@@ -503,7 +500,7 @@ void MinBiTCore::asyncFetchByte() {
 
             }
             else {
-                LOG_ERROR("(" + name + ") Error reading from stream: " + error.message());
+                VRDriverLog()->Log(("(" + name + ") Error reading from stream: " + error.message()).c_str());
             }
         });
 }

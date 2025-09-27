@@ -12,8 +12,11 @@
 #include <thread>
 #include <queue>
 #include <nlohmann/json.hpp>
+#include <openvr_driver.h>
 
 #include "IStream.h"
+
+using namespace vr;
 
 class MinBiTCore {
     public:
