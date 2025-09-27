@@ -1,6 +1,13 @@
 #pragma once
-#include <openvr_driver.h>
+#define WIN32_LEAN_AND_MEAN
+#include <winsock2.h>
+#include <ws2tcpip.h>
 #include <windows.h>
+#include <openvr_driver.h>
+#include <memory>
+
+#include "comms/MinBiTCore.h"
+#include "comms/MinBiTTcpServer.h"
 
 using namespace vr;
 
@@ -76,6 +83,9 @@ private:
     VRInputComponentHandle_t trackpadYHandle;
     VRInputComponentHandle_t joystickXHandle;
     VRInputComponentHandle_t trackpadXHandle;
+
+	std::shared_ptr<MinBiTCore> protocol;
+	MinBiTTcpServer tcpServer{"BoundlessVR Controller", 8080};
 
 	HmdQuaternion_t ExtractQuaternionFromPose(HmdMatrix34_t matrix);
 	HmdVector3_t ExtractPositionFromPose(HmdMatrix34_t matrix);

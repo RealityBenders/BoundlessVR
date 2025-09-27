@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\BoundlessVRDriver",
-    "\\BoundlessVRDriver\\BoundlessVRDriver"
+    "\\BoundlessVRDriver\\BoundlessVRDriver",
+    "\\BoundlessVRDriver\\BoundlessVRDriver\\resources"
   ],
-  "SelectedNode": "\\BoundlessVRDriver\\BoundlessVRDriver.sln",
+  "SelectedNode": "\\BoundlessVRDriver\\BoundlessVRDriver\\resources\\controller_profile.json",
   "PreviewInSolutionExplorer": false
 }
