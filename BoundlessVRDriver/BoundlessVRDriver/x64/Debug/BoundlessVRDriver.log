@@ -6,7 +6,4 @@ C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\
 C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(135,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(136,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(137,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  DeviceFactory.cpp
-  DeviceProvider.cpp
-  Generating Code...
   BoundlessVRDriver.vcxproj -> C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.dll
