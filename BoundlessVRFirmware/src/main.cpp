@@ -11,9 +11,9 @@
 using namespace DriverHeaders;
 using Request = std::shared_ptr<MinBiTCore::Request>;
 
-const char* ssid = "network";         // Your Wi-Fi network SSID
+const char* ssid = "ssid";         // Your Wi-Fi network SSID
 const char* password = "password"; // Your Wi-Fi network password
-const char* serverIp = "SERVER_IP_ADDRESS"; // IP address of your TCP server
+const char* serverIp = "serverip"; // IP address of your TCP server
 const uint16_t serverPort = 8080;       // Port of your TCP 
 
 #define BNO08X_CS 10
@@ -32,6 +32,7 @@ void driverReadHandler(Request request);
 void setReports(void);
 
 void setup() {
+  WiFi.mode(WIFI_STA);
   Serial.begin(115200);
   Serial.println();
 
@@ -110,9 +111,9 @@ void setReports(void) {
   // if (!bno08x.enableReport(SH2_GAME_ROTATION_VECTOR)) {
   //   Serial.println("Could not enable game rotation vector");
   // }
-  if (!bno08x.enableReport(SH2_STEP_COUNTER)) {
-    Serial.println("Could not enable step counter");
-  }
+  // if (!bno08x.enableReport(SH2_STEP_COUNTER)) {
+  //   Serial.println("Could not enable step counter");
+  // }
 }
 
 void loop() {
@@ -129,30 +130,66 @@ void loop() {
   }
 
   switch (sensorValue.sensorId) {
-    case SH2_ROTATION_VECTOR:
+    case SH2_ROTATION_VECTOR: {
+      Serial.println("Got rotation vector");
       protocol->writeRequest(IMU_QUAT);
+      Serial.println("Writing quaternion");
       protocol->writeQuaternionf(Eigen::Quaternionf(sensorValue.un.rotationVector.real, sensorValue.un.rotationVector.i, sensorValue.un.rotationVector.j, sensorValue.un.rotationVector.k));
+      Serial.println("Sending all");
       protocol->sendAll();
+      Serial.print("Rotation Vector: ");
+      Serial.print(sensorValue.un.rotationVector.real);
+      Serial.print(", ");
+      Serial.print(sensorValue.un.rotationVector.i);
+      Serial.print(", ");
+      Serial.print(sensorValue.un.rotationVector.j);
+      Serial.print(", ");
+      Serial.print(sensorValue.un.rotationVector.k);
+      Serial.println();
       break;
-
-    case SH2_GAME_ROTATION_VECTOR:
+    }
+    case SH2_GAME_ROTATION_VECTOR: {
+      Serial.println("Got game rotation vector");
       protocol->writeRequest(IMU_QUAT);
+      Serial.println("Writing quaternion");
       protocol->writeQuaternionf(Eigen::Quaternionf(sensorValue.un.gameRotationVector.real, sensorValue.un.gameRotationVector.i, sensorValue.un.gameRotationVector.j, sensorValue.un.gameRotationVector.k));
+      Serial.println("Sending all");
       protocol->sendAll();
+      Serial.print("Game Rotation Vector: ");
+      Serial.print(sensorValue.un.gameRotationVector.real);
+      Serial.print(", ");
+      Serial.print(sensorValue.un.gameRotationVector.i);
+      Serial.print(", ");
+      Serial.print(sensorValue.un.gameRotationVector.j);
+      Serial.print(", ");
+      Serial.print(sensorValue.un.gameRotationVector.k);
+      Serial.println();
       break;
+    }
 
-    case SH2_STEP_COUNTER:
+    case SH2_STEP_COUNTER: {
+      Serial.println("Got step counter");
       if (sensorValue.un.stepCounter.steps == lastStepCount) {
         break; // No new steps
       }
       lastStepCount = sensorValue.un.stepCounter.steps;
-      uint64_t deltaTime = micros() - timeSinceLastStep;
-      timeSinceLastStep = micros();
-      uint8_t* buffer = (uint8_t*)&deltaTime;
+      Serial.println("New step detected");
+      uint64_t currTime = micros();
+      uint64_t deltaTime = currTime - timeSinceLastStep;
+      timeSinceLastStep = currTime;
+      Serial.println("Writing step data");
       protocol->writeRequest(IMU_STEP);
-      protocol->writeBytes(buffer, sizeof(deltaTime));
+      Serial.println("Writing delta time");
+      protocol->writeBytes(reinterpret_cast<uint8_t*>(&deltaTime), sizeof(deltaTime));
+      Serial.println("Sending all");
       protocol->sendAll();
+      Serial.print("Step Count: ");
+      Serial.print(sensorValue.un.stepCounter.steps);
+      Serial.print(", Delta Time: ");
+      Serial.print(deltaTime);
+      Serial.println(" microseconds");
       break;
+    }
   }
 
   // Optional: Close and reconnect or handle disconnects
@@ -165,25 +202,20 @@ void loop() {
       delay(5000); // Wait before trying again
     }
   }
-
-  delay(10); // Send/receive every 10 milliseconds
 }
 
 void driverReadHandler(Request request) {
-	// Ensures request did not time out
-	if (request->IsTimedOut())
-  {
-      if (request->GetHeader() == PING) {
-          std::cout << "Connection request timed out. Trying again" << std::endl;
-          // Sends another ping
-          protocol->writeRequest(PING);
-          protocol->sendAll();
-      }
-      return;
+  if (request->IsTimedOut()) {
+    if (request->GetHeader() == PING) {
+      Serial.println("Connection request timed out. Trying again"); // Use Serial instead
+      // Sends another ping
+      protocol->writeRequest(PING);
+      protocol->sendAll();
+    }
   }
 	//Reads initial packet header
 	switch (request->GetHeader()) {
-		case PING:
+		case PING: {
 			// Checks response
       if (request->GetResponseHeader() == ACK) {
         Serial.println("Ping acknowledged by server.");
@@ -195,6 +227,7 @@ void driverReadHandler(Request request) {
       }
 			digitalWrite(LED_BUILTIN, HIGH);
 			break;
+    }
 		case IMU_QUAT: {
 			// Checks response
       if (request->GetResponseHeader() != ACK) {

@@ -275,7 +275,7 @@ void MinBiTCore::sendAll() {
     // Write the contents of the write buffer as a packet.
     std::lock_guard<std::mutex> lock(dataMutex);
     if (!stream || !stream->isOpen()) return;
-
+    Serial.println("Starting unsent requests");
     // Starts unsent requests (if there are any)
     for (int i = 0; i < unsentRequests.size(); i++)
     {
@@ -287,7 +287,7 @@ void MinBiTCore::sendAll() {
         // Adds to outgoing request queue
         outgoingRequests.push(request);
     }
-
+    Serial.println("Sending all data in write buffer");
     size_t trueBufferSize = writeBuffer.size();
     stream->write(writeBuffer.data(), trueBufferSize);
 

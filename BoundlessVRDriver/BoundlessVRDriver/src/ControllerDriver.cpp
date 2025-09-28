@@ -99,8 +99,6 @@ DriverPose_t ControllerDriver::GetPose()
 
 void ControllerDriver::RunFrame()
 {
-    VRDriverLog()->Log("ControllerDriver::RunFrame() called.");
-
     // Gets stride speed estimate from imu data
     double strideSpeed = 0.0; // Placeholder for actual speed calculation
 
