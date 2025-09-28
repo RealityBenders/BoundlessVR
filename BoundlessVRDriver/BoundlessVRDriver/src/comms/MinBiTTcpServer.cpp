@@ -1,5 +1,7 @@
 #include "MinBiTTcpServer.h"
-#include <openvr_driver.h>
+
+
+using namespace vr;
 
 MinBiTTcpServer::MinBiTTcpServer(std::string name, unsigned short port)
     : name(name), listenPort(port)
@@ -48,47 +50,35 @@ void MinBiTTcpServer::acceptClients() {
             std::string logMsg = "Client connected: " + clientIp;
             VRDriverLog()->Log(logMsg.c_str());
             int clientId = nextClientId++;
-            auto tcpStream = std::make_shared<TcpStream>(socket);
-            auto protocol = std::make_shared<MinBiTCore>(name, tcpStream);
-            protocol->setEndianness(MinBiTCore::Endianness::BigEndian);
-            protocol->setWriteMode(MinBiTCore::WriteMode::IMMEDIATE);
-            protocol->setRequestTimeout(500);
-            {
-                std::lock_guard<std::mutex> lock(clientMutex);
-                clientStreams[clientId] = tcpStream;
-                clientProtocols[clientId] = protocol;
-            }
-            if (readHandler) {
-                protocol->setReadHandler([this, protocol, clientId](std::shared_ptr<MinBiTCore::Request> request) {
-                    readHandler(protocol, request);
-                    protocol->asyncFetchByte();
-                });
-            }
-            protocol->asyncFetchByte();
+			clientSockets.push_back(socket);
+            // Starts asychronous read chain for this client
+            asyncReadLoop(socket);
         }
         // Accept next client
         acceptClients();
     });
 }
 
+void MinBiTTcpServer::asyncReadLoop(std::shared_ptr<boost::asio::ip::tcp::socket> socket) {
+    if (!socket || !socket->is_open()) return;
+
+    auto tempBuffer = std::make_shared<std::vector<uint8_t>>(1);
+    socket->async_read_some(boost::asio::buffer(tempBuffer->data(), 1),
+        [this, tempBuffer, socket](const boost::system::error_code& error, std::size_t bytesTransferred) {
+            if (!error) {
+                if (readHandler) {
+                    readHandler(tempBuffer->data());
+				}
+            }
+            else {
+                VRDriverLog()->Log(("(" + name + ") Error reading from stream: " + error.message()).c_str());
+            }
+            asyncReadLoop(socket);
+        });
+}
+
 void MinBiTTcpServer::setReadHandler(ReadHandler handler) {
     this->readHandler = handler;
-}
-
-std::vector<std::shared_ptr<MinBiTCore>> MinBiTTcpServer::getProtocols() {
-    std::lock_guard<std::mutex> lock(clientMutex);
-    std::vector<std::shared_ptr<MinBiTCore>> protocols;
-    for (auto& kv : clientProtocols) {
-        protocols.push_back(kv.second);
-    }
-    return protocols;
-}
-
-bool MinBiTTcpServer::isConnected() const {
-    for (const auto& kv : clientStreams) {
-        if (kv.second && kv.second->isOpen()) return true;
-    }
-    return false;
 }
 
 void MinBiTTcpServer::end() {
@@ -96,8 +86,8 @@ void MinBiTTcpServer::end() {
     if (acceptor) acceptor->close();
     {
         std::lock_guard<std::mutex> lock(clientMutex);
-        for (auto& kv : clientStreams) {
-            if (kv.second && kv.second->isOpen()) kv.second->close();
+        for (auto& kv : clientSockets) {
+            if (kv && kv->is_open()) kv->close();
         }
     }
     ioContext.stop();
@@ -105,6 +95,5 @@ void MinBiTTcpServer::end() {
         if (t.joinable()) t.join();
     }
     workerThreads.clear();
-    clientStreams.clear();
-    clientProtocols.clear();
+    clientSockets.clear();
 }

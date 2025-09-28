@@ -60,19 +60,19 @@ EVRInitError ControllerDriver::Activate(uint32_t unObjectId)
     //    ButtonMaskFromId(k_EButton_IndexController_JoyStick);
     //VRProperties()->SetUint64Property(props, Prop_SupportedButtons_Uint64, availableButtons);
 
+    // Sets TCP server read handler
+    tcpServer.setReadHandler([this](uint8_t* bytes) {
+        // Records step event
+		setStepEventReceived(true);
+        // Sets step time difference
+		setImuStepTime(sampleTime.elapsedMicros());
+        // Resets last sample time
+		sampleTime.reset();
+    });
+
     if(!tcpServer.begin()){
         VRDriverLog()->Log("ControllerDriver: Failed to start TCP server.");
         return VRInitError_Driver_Failed;
-    }
-    // Get all protocol pointers from the server
-    protocols = tcpServer.getProtocols();
-    // Set up each protocol
-    for (auto& protocol : protocols) {
-        protocol->loadPacketLengthsFromJson("packet_lengths.json");
-        // Use a lambda to bind the member function
-        protocol->setReadHandler([this, protocol](std::shared_ptr<MinBiTCore::Request> request) {
-            this->firmwareReadHandler(protocol, request);
-        });
     }
     
     return VRInitError_None;
@@ -230,46 +230,6 @@ HmdVector3_t ControllerDriver::ExtractPositionFromPose(HmdMatrix34_t matrix)
     p.v[1] = matrix.m[1][3];
     p.v[2] = matrix.m[2][3];
     return p;
-}
-
-void ControllerDriver::firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol, Request request) {
-    // Ensures request did not time out
-    
-    // Gets response header
-    uint8_t response = request->GetResponseHeader();
-    //Reads serial packets
-    switch (request->GetHeader()) {
-        case PING: {
-            // Sends acknowledge
-            protocol->writeByte(ACK);
-            protocol->sendAll();
-            break;
-        }
-        case IMU_QUAT: {
-            // Send acknowledge
-            protocol->writeByte(ACK);
-            protocol->sendAll();
-            // Process IMU data
-            // Reads in quaterniond
-            Eigen::Quaterniond newIMUQuat = protocol->readQuaterniond();
-            setImuQuat(newIMUQuat);
-            break;
-        }
-        case IMU_STEP: {
-            // Send acknowledge
-            protocol->writeByte(ACK);
-            protocol->sendAll();
-            // Process IMU step data
-            // Reads in step timestamp
-            uint64_t newStepTime = protocol->readData<uint64_t>();
-            VRDriverLog()->Log(("Step: " + std::to_string(newStepTime)).c_str());
-            setImuStepTime(newStepTime);
-            setStepEventReceived(true);
-            break;
-        }
-        default:
-            break;
-    }
 }
 
 // Getter and setter for imuQuat

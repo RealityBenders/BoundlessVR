@@ -19,23 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Project-Touchstone\TouchstoneInterface\src\utils\Timer.h" />
     <ClInclude Include="include\ControllerDriver.h" />
     <ClInclude Include="include\DeviceProvider.h" />
     <ClInclude Include="include\openvr.h" />
     <ClInclude Include="include\openvr_capi.h" />
     <ClInclude Include="include\openvr_driver.h" />
-    <ClInclude Include="src\comms\IStream.h" />
-    <ClInclude Include="src\comms\MinBiTCore.h" />
     <ClInclude Include="src\comms\MinBiTTcpServer.h" />
-    <ClInclude Include="src\comms\TcpStream.h" />
+    <ClInclude Include="src\Timer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\comms\MinBiTCore.cpp" />
+    <ClCompile Include="..\..\..\Project-Touchstone\TouchstoneInterface\src\utils\Timer.cpp" />
     <ClCompile Include="src\comms\MinBiTTcpServer.cpp" />
-    <ClCompile Include="src\comms\TcpStream.cpp" />
     <ClCompile Include="src\ControllerDriver.cpp" />
     <ClCompile Include="src\DeviceFactory.cpp" />
     <ClCompile Include="src\DeviceProvider.cpp" />
+    <ClCompile Include="src\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\openvr_api.cs" />
@@ -207,12 +206,10 @@
     <Error Condition="!Exists('..\packages\Eigen3.3.3.9\build\native\Eigen3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Eigen3.3.3.9\build\native\Eigen3.targets'))" />
     <Error Condition="!Exists('..\packages\boost.1.87.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost.1.87.0\build\boost.targets'))" />
   </Target>
-<ItemGroup>
-	<JsonFile Include=".\src\packet_lengths.json" />
-</ItemGroup>
-
-<Target Name="CopyJsonFile" AfterTargets="Build">
-	<Copy SourceFiles="@(JsonFile)"
-			DestinationFolder="$(OutDir)" />
-</Target>
+  <ItemGroup>
+    <JsonFile Include=".\src\packet_lengths.json" />
+  </ItemGroup>
+  <Target Name="CopyJsonFile" AfterTargets="Build">
+    <Copy SourceFiles="@(JsonFile)" DestinationFolder="$(OutDir)" />
+  </Target>
 </Project>
