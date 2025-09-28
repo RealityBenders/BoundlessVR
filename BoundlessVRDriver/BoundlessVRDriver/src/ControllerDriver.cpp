@@ -99,8 +99,17 @@ DriverPose_t ControllerDriver::GetPose()
 
 void ControllerDriver::RunFrame()
 {
-    // Gets stride speed estimate from imu data
-    double strideSpeed = 0.0; // Placeholder for actual speed calculation
+    // If there was a step event received
+    if (getStepEventReceived()) {
+        // Reset the event flag
+        setStepEventReceived(false);
+		// Computes stride speed (simple model: stride length / time between steps)
+		double newStrideSpeed = strideLength / (getImuStepTime() / 1000000.0); // imuStepTime is in microseconds
+		// Interpolate speed to avoid sudden jumps
+		strideSpeed = strideSpeed * (1.0 - strideSpeedSmoothing) + newStrideSpeed * strideSpeedSmoothing;
+        // Cap to max speed
+		strideSpeed = min(strideSpeed, maxSpeed);
+    }
 
     // Get headset position (3d)
     EigenPose headsetPose = GetHeadsetPose();
@@ -121,13 +130,11 @@ void ControllerDriver::RunFrame()
         }
     }
 
-    Eigen::Vector2d joystickOutput = diff * (strideSpeed / maxSpeed);
+    
+    // Normalize the direction of movement so it is relative to headset orientation
 
-    // Update all protocol instances if needed (example: send joystick data)
-    for (auto& protocol : protocols) {
-        // Example: protocol->writeVector2d(joystickOutput); // if such a method exists
-        // protocol->sendAll();
-    }
+
+    Eigen::Vector2d joystickOutput = diff * (strideSpeed / maxSpeed);
 
     VRDriverInput()->UpdateScalarComponent(joystickYHandle, joystickOutput.y(), 0);
     VRDriverInput()->UpdateScalarComponent(trackpadYHandle, joystickOutput.y(), 0);
@@ -168,6 +175,7 @@ EigenPose ControllerDriver::GetHeadsetPose()
 {
     Eigen::Quaterniond headsetRotation(1, 0, 0, 0); // Identity quaternion
     Eigen::Vector3d headsetPosition(0, 0, 0);
+	Eigen::Vector3d headsetVelocity(0, 0, 0);
 
     // Access through VRServerDriverHost
     if (VRServerDriverHost())
@@ -188,16 +196,17 @@ EigenPose ControllerDriver::GetHeadsetPose()
                     // Get the pose from the server driver host
                     TrackedDevicePose_t trackedDevicePose;
                     VRServerDriverHost()->GetRawTrackedDevicePoses(0, &trackedDevicePose, 1);
-                    // Extract rotation from the pose (this would need proper implementation)
+                    
                     headsetRotation = ToEigen(ExtractQuaternionFromPose(trackedDevicePose.mDeviceToAbsoluteTracking));
                     headsetPosition = ToEigen(ExtractPositionFromPose(trackedDevicePose.mDeviceToAbsoluteTracking));
+					headsetVelocity = ToEigen(trackedDevicePose.vVelocity);
                     break;
                 }
             }
         }
     }
 
-    return EigenPose{headsetRotation, headsetPosition};
+    return EigenPose{headsetRotation, headsetPosition, headsetVelocity};
 }
 
 HmdQuaternion_t ControllerDriver::ExtractQuaternionFromPose(HmdMatrix34_t matrix)
@@ -243,10 +252,7 @@ void ControllerDriver::firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol,
             // Process IMU data
             // Reads in quaterniond
             Eigen::Quaterniond newIMUQuat = protocol->readQuaterniond();
-            {
-                std::lock_guard<std::mutex> lock(dataMutex);
-                imuQuat = newIMUQuat;
-            }
+            setImuQuat(newIMUQuat);
             break;
         }
         case IMU_STEP: {
@@ -255,11 +261,43 @@ void ControllerDriver::firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol,
             protocol->sendAll();
             // Process IMU step data
             // Reads in step timestamp
-            uint64_t stepTime = protocol->readData<uint64_t>();
-            VRDriverLog()->Log(("Step: " + std::to_string(stepTime)).c_str());
-			break;
+            uint64_t newStepTime = protocol->readData<uint64_t>();
+            VRDriverLog()->Log(("Step: " + std::to_string(newStepTime)).c_str());
+            setImuStepTime(newStepTime);
+            setStepEventReceived(true);
+            break;
         }
         default:
             break;
     }
+}
+
+// Getter and setter for imuQuat
+Eigen::Quaterniond ControllerDriver::getImuQuat() {
+    std::lock_guard<std::mutex> lock(dataMutex);
+    return imuQuat;
+}
+void ControllerDriver::setImuQuat(const Eigen::Quaterniond& quat) {
+    std::lock_guard<std::mutex> lock(dataMutex);
+    imuQuat = quat;
+}
+
+// Getter and setter for imuStepTime
+uint64_t ControllerDriver::getImuStepTime() {
+    std::lock_guard<std::mutex> lock(dataMutex);
+    return imuStepTime;
+}
+void ControllerDriver::setImuStepTime(uint64_t stepTime) {
+    std::lock_guard<std::mutex> lock(dataMutex);
+    imuStepTime = stepTime;
+}
+
+// Getter and setter for stepEventReceived
+bool ControllerDriver::getStepEventReceived() {
+    std::lock_guard<std::mutex> lock(dataMutex);
+    return stepEventReceived;
+}
+void ControllerDriver::setStepEventReceived(bool received) {
+    std::lock_guard<std::mutex> lock(dataMutex);
+    stepEventReceived = received;
 }
