@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 9b125ea6c5cd9594d8c0b666329e5691
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 309567
+  packageName: Easy Door System
+  packageVersion: 1.3
+  assetPath: Assets/Sat Productions/E-01/Easy Door System/Scripts/FirstPersonCameraController.cs
+  uploadId: 761990

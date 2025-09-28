@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: aee62671608233d468d6306fd7e0d8be
+timeCreated: 1505776098
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 25800000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Scenes/1 - Inferno VFX
+    (Demo)/LightingData.asset
+  uploadId: 235952

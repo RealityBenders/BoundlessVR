@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: feca8cd7487ca1e4e81e90af23cdc117
+timeCreated: 1445663680
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Materials/Particles/Sprites/mat_vfx-inf_particle_sprite_fractal-alpha-[1.0].mat
+  uploadId: 235952

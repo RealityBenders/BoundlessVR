@@ -38,6 +38,8 @@ public class GrabbableTrigger : MonoBehaviour
         if (uiText != null)
             uiText.text = "You grabbed: " + gameObject.name;
 
+        gameObject.SetActive(false);
+
 
 
     }

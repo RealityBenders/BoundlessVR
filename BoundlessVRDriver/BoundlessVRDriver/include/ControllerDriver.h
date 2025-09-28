@@ -5,6 +5,7 @@
 #include <windows.h>
 #include <openvr_driver.h>
 #include <memory>
+#include <algorithm>
 #include <Eigen/Dense>
 
 #include "FirmwarePacketLengths.h"
@@ -18,6 +19,7 @@ using Request = std::shared_ptr<MinBiTCore::Request>;
 struct EigenPose {
     Eigen::Quaterniond rotation;
     Eigen::Vector3d position;
+	Eigen::Vector3d velocity;
 };
 
 namespace DriverHeaders {
@@ -106,6 +108,19 @@ public:
     Eigen::Quaterniond ToEigen(const HmdQuaternion_t& q);
     HmdQuaternion_t ToOpenVR(const Eigen::Quaterniond& q);
 
+public:
+    // Getter and setter for imuQuat
+    Eigen::Quaterniond getImuQuat();
+    void setImuQuat(const Eigen::Quaterniond& quat);
+
+    // Getter and setter for imuStepTime
+    uint64_t getImuStepTime();
+    void setImuStepTime(uint64_t stepTime);
+
+    // Getter and setter for stepEventReceived
+    bool getStepEventReceived();
+    void setStepEventReceived(bool received);
+
 private:
     uint32_t driverId;
 
@@ -129,6 +144,9 @@ private:
     // Locomotion algorithm parameters for virtual joystick
     double joystickRadius = 0.3; // Radius of the virtual joystick in meters
     double joystickDeadzone = 0.05; // Deadzone to prevent drift
+	double strideLength = 0.7; // Average stride length in meters
+	double strideSpeed = 0; // Current stride speed in meters per second
+	double strideSpeedSmoothing = 0.1; // Smoothing factor for speed changes
     double maxSpeed = 2.0; // Maximum speed in meters per second
     // Joystick center position
     Eigen::Vector2d joystickCenter = { 0.0, 0.0 };

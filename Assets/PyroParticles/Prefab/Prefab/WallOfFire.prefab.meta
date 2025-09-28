@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8c51d7df2d29ba8449f85eb74c672555
+timeCreated: 1430431651
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36825
+  packageName: Fire & Spell Effects
+  packageVersion: 1.0.3
+  assetPath: Assets/PyroParticles/Prefab/Prefab/WallOfFire.prefab
+  uploadId: 500401

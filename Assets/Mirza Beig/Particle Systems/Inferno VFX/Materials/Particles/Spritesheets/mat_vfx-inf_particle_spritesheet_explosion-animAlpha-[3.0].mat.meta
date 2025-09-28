@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6c542dc4538225e4f8dd84d30394731b
+timeCreated: 1435958817
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Materials/Particles/Spritesheets/mat_vfx-inf_particle_spritesheet_explosion-animAlpha-[3.0].mat
+  uploadId: 235952

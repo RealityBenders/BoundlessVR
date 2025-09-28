@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 4c510a03d7e25f949891cc966a3b4cda
+timeCreated: 1435559456
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/_Common/Scripts/_Demo/LoopingParticleSystemsManager.cs
+  uploadId: 235952
