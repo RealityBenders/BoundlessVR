@@ -239,13 +239,24 @@ void ControllerDriver::firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol,
         case IMU_QUAT: {
             // Send acknowledge
             protocol->writeByte(ACK);
+            protocol->sendAll();
             // Process IMU data
+            // Reads in quaterniond
+            Eigen::Quaterniond newIMUQuat = protocol->readQuaterniond();
+            {
+                std::lock_guard<std::mutex> lock(dataMutex);
+                imuQuat = newIMUQuat;
+            }
             break;
         }
         case IMU_STEP: {
             // Send acknowledge
             protocol->writeByte(ACK);
+            protocol->sendAll();
             // Process IMU step data
+            // Reads in step timestamp
+            uint64_t stepTime = protocol->readData<uint64_t>();
+            VRDriverLog()->Log(("Step: " + std::to_string(stepTime)).c_str());
 			break;
         }
         default:

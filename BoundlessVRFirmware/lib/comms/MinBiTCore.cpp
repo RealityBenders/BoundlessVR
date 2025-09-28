@@ -254,14 +254,14 @@ void MinBiTCore::writeByte(uint8_t value) {
 void MinBiTCore::writeFloat(float value) {
     // Serialize a float with correct endianness and write.
     uint8_t* networkValue = reinterpret_cast<uint8_t*>(&value);
-    writeBytes(networkValue, sizeof(networkValue));
+    writeBytes(networkValue, sizeof(float));
 }
 
 void MinBiTCore::writeInt16(int16_t data) {
     // Serialize and write a 16-bit integer.
-    uint8_t buffer[sizeof(data)];
-    memcpy(buffer, &data, sizeof(data));
-    writeBytes(buffer, sizeof(data));
+    uint8_t buffer[sizeof(int16_t)];
+    memcpy(buffer, &data, sizeof(int16_t));
+    writeBytes(buffer, sizeof(int16_t));
 }
 
 void MinBiTCore::writeQuaternionf(const Eigen::Quaternionf& quaternion) {
@@ -277,7 +277,8 @@ void MinBiTCore::sendAll() {
     if (!stream || !stream->isOpen()) return;
     Serial.println("Starting unsent requests");
     // Starts unsent requests (if there are any)
-    for (int i = 0; i < unsentRequests.size(); i++)
+    std::size_t numUnsentRequests = unsentRequests.size();
+    for (int i = 0; i < numUnsentRequests; i++)
     {
         // Dequeues from unsent requests
         std::shared_ptr<Request> request = unsentRequests.front();
@@ -411,10 +412,13 @@ bool MinBiTCore::characterizePacket() {
 void MinBiTCore::fetchData() {
     if (!stream || !stream->isOpen()) return;
 
-    uint8_t* readBuffer;
-    uint8_t bytesTransferred = stream->available();
-    stream->read(readBuffer, bytesTransferred);
-    appendToReadBuffer(readBuffer, bytesTransferred);
+    size_t bytesTransferred = stream->available();
+    if (bytesTransferred == 0) return;
+
+    std::vector<uint8_t> buf(bytesTransferred);
+    stream->read(buf.data(), bytesTransferred);
+
+    appendToReadBuffer(buf.data(), bytesTransferred);
 
     // Process packets only when enough data is available
     while (getReadBufferSize() > 0) {

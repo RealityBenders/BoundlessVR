@@ -116,6 +116,15 @@ private:
     std::vector<std::shared_ptr<MinBiTCore>> protocols; // Changed from single protocol to vector
     MinBiTTcpServer tcpServer{"BoundlessVR Controller", 8080};
 
+	// Mutex for accessing imu data
+	std::mutex dataMutex;
+	// Current IMU quaternion
+	Eigen::Quaterniond imuQuat = Eigen::Quaterniond::Identity();
+	// Current IMU step time
+	uint64_t imuStepTime = 0;
+	// Whether a step event has been received since last frame
+	bool stepEventReceived = false;
+
     // Locomotion algorithm parameters for virtual joystick
     double joystickRadius = 0.3; // Radius of the virtual joystick in meters
     double joystickDeadzone = 0.05; // Deadzone to prevent drift

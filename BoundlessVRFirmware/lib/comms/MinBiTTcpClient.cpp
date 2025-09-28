@@ -18,6 +18,24 @@ bool MinBiTTcpClient::begin(const char* serverIp, uint16_t serverPort) {
         return false;
     }
     attachProtocol();
+    
+    // Start background IO thread
+    if (!running.load()) {
+        running.store(true);
+        ioThread = std::thread([this]() {
+            // Poll loop: call fetchData periodically while running
+            while (running.load()) {
+                try {
+                    if (protocol) protocol->fetchData();
+                }
+                catch (...) {
+                    // Swallow exceptions to keep the thread alive
+                }
+                // Small sleep to avoid busy-waiting; adjust as needed
+                std::this_thread::sleep_for(std::chrono::milliseconds(5));
+            }
+        });
+    }
     return true;
 }
 
@@ -30,13 +48,17 @@ void MinBiTTcpClient::attachProtocol() {
         if (readHandler) {
             readHandler(protocol, request);
         }
-        protocol->fetchData();
     });
-    protocol->fetchData();
 }
 
 void MinBiTTcpClient::end() {
-    tcpStream->close();
+    // Stop background thread
+    running.store(false);
+    if (ioThread.joinable()) {
+        ioThread.join();
+    }
+
+    if (tcpStream) tcpStream->close();
 }
 
 std::shared_ptr<MinBiTCore> MinBiTTcpClient::getProtocol() {
