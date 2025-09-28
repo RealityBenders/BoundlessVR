@@ -118,7 +118,7 @@ class MinBiTCore {
         void sendAll();
 
         // Reading functions
-        void fetchData();
+        void updateData();
         uint8_t readByte();
         uint8_t peekByte();
         void readBytes(uint8_t* buffer, std::size_t len);
@@ -174,6 +174,9 @@ class MinBiTCore {
 
         //Read handler
 		ReadHandler readHandler;
+
+        // Whether there is pending data to write (for BULK mode)
+        std::atomic<bool> writePending{false};
 
         // Buffer management
         void appendToReadBuffer(const uint8_t* data, std::size_t length);

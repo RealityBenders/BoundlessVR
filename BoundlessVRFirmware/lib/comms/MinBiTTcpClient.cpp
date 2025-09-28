@@ -23,15 +23,18 @@ bool MinBiTTcpClient::begin(const char* serverIp, uint16_t serverPort) {
     if (!running.load()) {
         running.store(true);
         ioThread = std::thread([this]() {
-            // Poll loop: call fetchData periodically while running
+            // Poll loop: call fetchData and perform writes when writePending is set
             while (running.load()) {
                 try {
-                    if (protocol) protocol->fetchData();
+                    if (protocol) {
+                        protocol->updateData();
+                    }
                 }
                 catch (...) {
                     // Swallow exceptions to keep the thread alive
                 }
-                // Small sleep to avoid busy-waiting; adjust as needed
+
+                // Sleep a small amount to balance CPU usage and responsiveness
                 std::this_thread::sleep_for(std::chrono::milliseconds(5));
             }
         });
