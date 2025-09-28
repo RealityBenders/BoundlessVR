@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f384f935e647d9441b3eb65a4aa557dc
+timeCreated: 1438490498
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Oneshot/pf_vfx-inf_psys_demo_oneshot_muzzleFlash2.prefab
+  uploadId: 235952

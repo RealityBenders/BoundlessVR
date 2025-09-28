@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bfb96bb86f3f7c349a574d4cdb56f6c9
+timeCreated: 1431105798
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36825
+  packageName: Fire & Spell Effects
+  packageVersion: 1.0.3
+  assetPath: Assets/PyroParticles/Prefab/Materials/FireParticleFlameSheetMaterial.mat
+  uploadId: 500401

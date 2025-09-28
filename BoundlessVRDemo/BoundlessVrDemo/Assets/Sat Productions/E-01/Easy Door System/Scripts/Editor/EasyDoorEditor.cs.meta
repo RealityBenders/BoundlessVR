@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b0912bc8818b3614f9457ab7af0a6e0b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 309567
+  packageName: Easy Door System
+  packageVersion: 1.3
+  assetPath: Assets/Sat Productions/E-01/Easy Door System/Scripts/Editor/EasyDoorEditor.cs
+  uploadId: 761990

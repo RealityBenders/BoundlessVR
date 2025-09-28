@@ -1,0 +1,9 @@
+﻿  ControllerDriver.cpp
+C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(12,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
+C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(13,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
+C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(14,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
+C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(132,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(133,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(134,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(135,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  BoundlessVRDriver.vcxproj -> C:\Users\scmgf\Source\Repos\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.dll

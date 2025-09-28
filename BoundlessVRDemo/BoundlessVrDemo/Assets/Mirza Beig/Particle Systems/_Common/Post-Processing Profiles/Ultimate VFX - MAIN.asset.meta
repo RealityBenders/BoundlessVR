@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: ef87d85647253a447ab3e746f0a08ad5
+timeCreated: 1497320414
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/_Common/Post-Processing Profiles/Ultimate
+    VFX - MAIN.asset
+  uploadId: 235952

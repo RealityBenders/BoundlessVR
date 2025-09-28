@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: edb4b036759befb44adb7543192710db
+timeCreated: 1430497061
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36825
+  packageName: Fire & Spell Effects
+  packageVersion: 1.0.3
+  assetPath: Assets/PyroParticles/Prefab/Script/FireBaseScript.cs
+  uploadId: 500401

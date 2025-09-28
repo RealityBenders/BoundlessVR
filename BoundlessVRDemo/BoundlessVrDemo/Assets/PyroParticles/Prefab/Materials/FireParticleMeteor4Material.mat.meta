@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9f663aa0d3dc3f44389306ed68c6c668
+timeCreated: 1430600924
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36825
+  packageName: Fire & Spell Effects
+  packageVersion: 1.0.3
+  assetPath: Assets/PyroParticles/Prefab/Materials/FireParticleMeteor4Material.mat
+  uploadId: 500401

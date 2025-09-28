@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3c5f4e32698bdb04eaed647f60310510
+timeCreated: 1430513152
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36825
+  packageName: Fire & Spell Effects
+  packageVersion: 1.0.3
+  assetPath: Assets/PyroParticles/Prefab/Prefab/FireExplosion.prefab
+  uploadId: 500401

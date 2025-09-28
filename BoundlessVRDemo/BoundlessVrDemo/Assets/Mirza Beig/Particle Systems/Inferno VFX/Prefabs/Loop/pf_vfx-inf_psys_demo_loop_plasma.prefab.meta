@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f9b579fccdc1a404980559960286a691
+timeCreated: 1438490401
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Loop/pf_vfx-inf_psys_demo_loop_plasma.prefab
+  uploadId: 235952

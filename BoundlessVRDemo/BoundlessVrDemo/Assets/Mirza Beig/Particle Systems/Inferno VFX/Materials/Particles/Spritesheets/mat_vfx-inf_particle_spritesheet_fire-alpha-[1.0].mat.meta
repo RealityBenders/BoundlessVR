@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: dd5a306fcc1a97b4b83be807f1a1d9bd
+timeCreated: 1435536722
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Materials/Particles/Spritesheets/mat_vfx-inf_particle_spritesheet_fire-alpha-[1.0].mat
+  uploadId: 235952

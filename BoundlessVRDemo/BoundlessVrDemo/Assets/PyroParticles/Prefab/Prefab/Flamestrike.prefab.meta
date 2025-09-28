@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b86c5b2aa8096224886b7d41a74230ac
+timeCreated: 1431187965
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36825
+  packageName: Fire & Spell Effects
+  packageVersion: 1.0.3
+  assetPath: Assets/PyroParticles/Prefab/Prefab/Flamestrike.prefab
+  uploadId: 500401

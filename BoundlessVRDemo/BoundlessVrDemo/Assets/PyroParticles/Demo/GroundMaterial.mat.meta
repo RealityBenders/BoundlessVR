@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0d5235a7c819c56458eed6c660319223
+timeCreated: 1430409612
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36825
+  packageName: Fire & Spell Effects
+  packageVersion: 1.0.3
+  assetPath: Assets/PyroParticles/Demo/GroundMaterial.mat
+  uploadId: 500401

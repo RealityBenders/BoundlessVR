@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f45d0aac4a59fb64ab8f6b07579e6b81
+timeCreated: 1430410846
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36825
+  packageName: Fire & Spell Effects
+  packageVersion: 1.0.3
+  assetPath: Assets/PyroParticles/Demo/GroundPlane.prefab
+  uploadId: 500401

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 447497642ffec314b83b9af62620d6dc
+timeCreated: 1438490369
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Loop/pf_vfx-inf_psys_demo_loop_fire6.prefab
+  uploadId: 235952

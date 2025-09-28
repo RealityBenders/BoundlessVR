@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: e03644fdf51cfd34f8fdc92879c31a14
+timeCreated: 1430604337
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36825
+  packageName: Fire & Spell Effects
+  packageVersion: 1.0.3
+  assetPath: Assets/PyroParticles/Prefab/Script/FireCollisionForwardScript.cs
+  uploadId: 500401
