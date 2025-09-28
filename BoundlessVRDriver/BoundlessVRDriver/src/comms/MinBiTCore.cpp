@@ -300,14 +300,14 @@ void MinBiTCore::writeFloat(float value) {
     } else {
         networkValue = boost::endian::native_to_little(networkValue);
     }
-    writeBytes(reinterpret_cast<uint8_t*>(&networkValue), sizeof(networkValue));
+    writeBytes(reinterpret_cast<uint8_t*>(&networkValue), sizeof(float));
 }
 
 void MinBiTCore::writeInt16(int16_t data) {
     // Serialize and write a 16-bit integer.
     uint8_t buffer[sizeof(data)];
     memcpy(buffer, &data, sizeof(data));
-    writeBytes(buffer, sizeof(data));
+    writeBytes(buffer, sizeof(int16_t));
 }
 
 void MinBiTCore::writeVector3f(const Eigen::Vector3f& vector) {

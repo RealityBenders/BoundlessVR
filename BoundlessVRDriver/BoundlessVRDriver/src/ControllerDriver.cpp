@@ -244,7 +244,11 @@ void ControllerDriver::firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol,
             protocol->sendAll();
             // Process IMU data
             // Reads in quaterniond
-            protocol->readQuaterniond();
+            Eigen::Quaterniond newIMUQuat = protocol->readQuaterniond();
+            {
+                std::lock_guard<std::mutex> lock(dataMutex);
+                imuQuat = newIMUQuat;
+            }
             break;
         }
         case IMU_STEP: {

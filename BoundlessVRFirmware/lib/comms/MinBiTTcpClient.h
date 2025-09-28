@@ -3,6 +3,9 @@
 
 #include <memory>
 #include <string>
+#include <functional>
+#include <thread>
+#include <atomic>
 #include <Wifi.h>
 #include <WiFiClient.h>
 #include "TcpStream.h"
@@ -37,7 +40,7 @@ private:
     std::shared_ptr<TcpStream> tcpStream;
     std::shared_ptr<MinBiTCore> protocol;
     std::thread ioThread;
-    bool running = false;
+    std::atomic<bool> running{false};
 
     ReadHandler readHandler;
 
