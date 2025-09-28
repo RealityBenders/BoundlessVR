@@ -5844,7 +5844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  uiPanel: {fileID: 1098275139}
+  uiPanel: {fileID: 2027653880}
   freezer: {fileID: 1215343606}
 --- !u!54 &1848378357
 Rigidbody:
@@ -6198,13 +6198,14 @@ GameObject:
   - component: {fileID: 2027653883}
   - component: {fileID: 2027653882}
   - component: {fileID: 2027653881}
+  - component: {fileID: 2027653886}
   m_Layer: 5
   m_Name: HitEndCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2027653881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6307,6 +6308,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 2.74}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2027653886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027653880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d0b7395dfb247a7bc2a6f7cc28c6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 2
+  heightOffset: 0
+  faceCamera: 1
 --- !u!1 &2057348938
 GameObject:
   m_ObjectHideFlags: 0

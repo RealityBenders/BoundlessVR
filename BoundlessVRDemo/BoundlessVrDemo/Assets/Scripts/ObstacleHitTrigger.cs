@@ -33,8 +33,8 @@ public class ObstacleHitTrigger : MonoBehaviour
         Debug.Log("Player bumped into trigger zone!");
         if (uiPanel != null)
             uiPanel.SetActive(true);
-        if (freezer)
-            freezer.FreezeForGameOver();
+        // if (freezer)
+        //     freezer.FreezeForGameOver();
     }
 
     // // Update is called once per frame

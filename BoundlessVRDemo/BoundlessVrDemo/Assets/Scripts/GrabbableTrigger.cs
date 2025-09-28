@@ -29,7 +29,7 @@ public class GrabbableTrigger : MonoBehaviour
 
     private void OnGrab(SelectEnterEventArgs args)
     {
-        ScoreManager.Instance.AddPoint();
+        // ScoreManager.Instance.AddPoint();
         // Show UI panel
         if (uiPanel != null)
             uiPanel.SetActive(true);
