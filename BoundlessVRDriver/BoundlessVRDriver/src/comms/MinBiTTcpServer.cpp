@@ -41,7 +41,8 @@ void MinBiTTcpServer::acceptClients() {
             std::string clientIp;
             try {
                 clientIp = socket->remote_endpoint().address().to_string();
-            } catch (const std::exception&) {
+            }
+            catch (const std::exception&) {
                 clientIp = "Unknown";
             }
             // Log client connection with IP using OpenVR logging
@@ -53,26 +54,43 @@ void MinBiTTcpServer::acceptClients() {
             protocol->setEndianness(MinBiTCore::Endianness::BigEndian);
             protocol->setWriteMode(MinBiTCore::WriteMode::IMMEDIATE);
             protocol->setRequestTimeout(500);
+
+            // Call the initialization handler if set
+            if (initHandler) {
+                initHandler(protocol);
+            }
+
             {
                 std::lock_guard<std::mutex> lock(clientMutex);
                 clientStreams[clientId] = tcpStream;
                 clientProtocols[clientId] = protocol;
             }
+
+            // Set read handler if available
             if (readHandler) {
-                protocol->setReadHandler([this, protocol, clientId](std::shared_ptr<MinBiTCore::Request> request) {
+                protocol->setReadHandler([this, protocol](std::shared_ptr<MinBiTCore::Request> request) {
                     readHandler(protocol, request);
-                    protocol->asyncFetchByte();
-                });
+                    });
             }
+
+            // Start the async read chain - this is critical
             protocol->asyncFetchByte();
+        }
+        else if (ec) {
+            // Log the error for debugging
+            VRDriverLog()->Log(("Accept error: " + ec.message()).c_str());
         }
         // Accept next client
         acceptClients();
-    });
+        });
 }
 
 void MinBiTTcpServer::setReadHandler(ReadHandler handler) {
     this->readHandler = handler;
+}
+
+void MinBiTTcpServer::setInitHandler(InitHandler handler) {
+    this->initHandler = handler;
 }
 
 std::vector<std::shared_ptr<MinBiTCore>> MinBiTTcpServer::getProtocols() {
@@ -84,7 +102,8 @@ std::vector<std::shared_ptr<MinBiTCore>> MinBiTTcpServer::getProtocols() {
     return protocols;
 }
 
-bool MinBiTTcpServer::isConnected() const {
+bool MinBiTTcpServer::isConnected() {
+    std::lock_guard<std::mutex> lock(clientMutex);
     for (const auto& kv : clientStreams) {
         if (kv.second && kv.second->isOpen()) return true;
     }

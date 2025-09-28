@@ -392,6 +392,37 @@ bool MinBiTCore::characterizePacket() {
 void MinBiTCore::updateData() {
     if (!stream || !stream->isOpen()) return;
 
+    // If there is pending data to write, do so now
+    if (writePending.load()) {
+        // Prepare local buffer to write without holding the dataMutex during network IO.
+        std::vector<uint8_t> localBuf;
+
+        // Move data out while holding the lock
+        {
+            std::lock_guard<std::mutex> lock(dataMutex);
+            
+            // Starts unsent requests (if there are any)
+            std::size_t numUnsentRequests = unsentRequests.size();
+            for (std::size_t i = 0; i < numUnsentRequests; ++i)
+            {
+                std::shared_ptr<Request> request = unsentRequests.front();
+                unsentRequests.pop();
+                request->Start();
+                outgoingRequests.push(request);
+            }
+            // Swap write buffer out so we can write without holding the lock
+            writeBuffer.swap(localBuf);
+            // We will clear the pending flag now; if the write fails or more data arrives,
+            // writePending will be set again by writer functions.
+            writePending.store(false);
+        }
+
+        // Perform network IO without holding the data mutex
+        if (!localBuf.empty() && stream && stream->isOpen()) {
+            stream->write(localBuf.data(), localBuf.size());
+        }
+    }
+    
     size_t bytesTransferred = stream->available();
     if (bytesTransferred == 0) return;
 
@@ -418,41 +449,6 @@ void MinBiTCore::updateData() {
 
     // Timeout check: remove outgoing requests that have timed out
     checkForTimeouts();
-
-    // If there is pending data to write, do so now
-    if (writePending.load()) {
-        // Prepare local buffer to write without holding the dataMutex during network IO.
-        std::vector<uint8_t> localBuf;
-
-        // Move data out while holding the lock
-        {
-            std::lock_guard<std::mutex> lock(dataMutex);
-            if (!stream || !stream->isOpen()) {
-                // No stream to write to, leave writePending as-is (caller may retry later)
-                return;
-            }
-
-            // Starts unsent requests (if there are any)
-            std::size_t numUnsentRequests = unsentRequests.size();
-            for (std::size_t i = 0; i < numUnsentRequests; ++i)
-            {
-                std::shared_ptr<Request> request = unsentRequests.front();
-                unsentRequests.pop();
-                request->Start();
-                outgoingRequests.push(request);
-            }
-            // Swap write buffer out so we can write without holding the lock
-            writeBuffer.swap(localBuf);
-            // We will clear the pending flag now; if the write fails or more data arrives,
-            // writePending will be set again by writer functions.
-            writePending.store(false);
-        }
-
-        // Perform network IO without holding the data mutex
-        if (!localBuf.empty() && stream && stream->isOpen()) {
-            stream->write(localBuf.data(), localBuf.size());
-        }
-    }
 }
 
 uint8_t MinBiTCore::readByte() {

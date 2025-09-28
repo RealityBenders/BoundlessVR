@@ -162,69 +162,39 @@ void MinBiTCore::setRequestTimeout(uint16_t timeoutMs) {
     this->requestTimeoutMs = timeoutMs;
 }
 
-bool MinBiTCore::loadPacketLengthsFromJson(const std::string& filePath) {
-    try {
-        std::ifstream ifs(filePath);
-        auto j = json::parse(ifs);
-        if (j.contains("outgoingByRequest") && j["outgoingByRequest"].is_array()) {
-            outgoingByRequest.clear();
-            for (const auto& entry : j["outgoingByRequest"]) {
-                if (entry.contains("header") && entry.contains("length")) {
-                    uint8_t header = entry["header"];
-                    int length = entry["length"];
-                    outgoingByRequest[header] = length;
-                }
-            }
-        }
-        if (j.contains("outgoingByResponse") && j["outgoingByResponse"].is_array()) {
-            outgoingByResponse.clear();
-            for (const auto& entry : j["outgoingByResponse"]) {
-                if (entry.contains("header") && entry.contains("length")) {
-                    uint8_t header = entry["header"];
-                    int length = entry["length"];
-                    outgoingByResponse[header] = length;
-                }
-            }
-        }
-        if (j.contains("incomingByRequest") && j["incomingByRequest"].is_array()) {
-            incomingByRequest.clear();
-            for (const auto& entry : j["incomingByRequest"]) {
-                if (entry.contains("header") && entry.contains("length")) {
-                    uint8_t header = entry["header"];
-                    int length = entry["length"];
-                    incomingByRequest[header] = length;
-                }
-            }
-        }
-        return true;
-    }
-    catch (std::exception e) {
-        VRDriverLog()->Log("File not found");
-        return false;
-    }
+void MinBiTCore::loadOutgoingByRequest(std::unordered_map<uint8_t, int16_t>* map) {
+    this->outgoingByRequest = map;
+}
+
+void MinBiTCore::loadOutgoingByResponse(std::unordered_map<uint8_t, int16_t>* map) {
+    this->outgoingByResponse = map;
+}
+
+void MinBiTCore::loadIncomingByRequest(std::unordered_map<uint8_t, int16_t>* map) {
+    this->incomingByRequest = map;
 }
 
 bool MinBiTCore::getExpectedPacketLength(std::shared_ptr<Request> request, int16_t& length) const {
     // Checks whether request is incoming or outgoing
     if (request->IsOutgoing()) {
         // Lengths by response header are the priority
-        auto it = outgoingByResponse.find(request->GetResponseHeader());
-        if (it != outgoingByResponse.end()) {
+        auto it = outgoingByResponse->find(request->GetResponseHeader());
+        if (it != outgoingByResponse->end()) {
             length = it->second;
             return true;
         }
 
         // Otherwise searches by request header
-        it = outgoingByRequest.find(request->GetHeader());
-        if (it != outgoingByRequest.end()) {
+        it = outgoingByRequest->find(request->GetHeader());
+        if (it != outgoingByRequest->end()) {
             length = it->second;
             return true;
         }
     }
     else if (request->IsIncoming()) {
         // Searches incoming requests by request header
-        auto it = incomingByRequest.find(request->GetHeader());
-        if (it != incomingByRequest.end()) {
+        auto it = incomingByRequest->find(request->GetHeader());
+        if (it != incomingByRequest->end()) {
             length = it->second;
             return true;
         }
@@ -392,8 +362,8 @@ bool MinBiTCore::characterizePacket() {
         uint8_t receivedHeader = peekByte();
 
         // Checks for incoming request header
-        auto it = incomingByRequest.find(receivedHeader);
-        if (it != incomingByRequest.end()) {
+        auto it = incomingByRequest->find(receivedHeader);
+        if (it != incomingByRequest->end()) {
             // Creates new incoming request
             currRequest = std::make_shared<Request>(receivedHeader, Request::Type::INCOMING);
         }
@@ -471,6 +441,7 @@ bool MinBiTCore::characterizePacket() {
 }
 
 void MinBiTCore::asyncFetchByte() {
+    VRDriverLog()->Log("Fetching data");
     if (!stream || !stream->isOpen()) return;
 
     auto tempBuffer = std::make_shared<std::vector<uint8_t>>(1);

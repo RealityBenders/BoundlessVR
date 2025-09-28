@@ -6,4 +6,8 @@ C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\
 C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(133,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(134,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\scmgf\source\repos\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(135,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  DeviceFactory.cpp
+  DeviceProvider.cpp
+  FirmwarePacketLengths.cpp
+  Generating Code...
   BoundlessVRDriver.vcxproj -> C:\Users\scmgf\Source\Repos\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.dll

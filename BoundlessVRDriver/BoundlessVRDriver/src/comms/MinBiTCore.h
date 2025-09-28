@@ -110,8 +110,9 @@ class MinBiTCore {
         // Set request timeout
         void setRequestTimeout(uint16_t timeoutMs);
 
-        // Loads packet length information from JSON
-        bool loadPacketLengthsFromJson(const std::string& filePath);
+        void loadOutgoingByRequest(std::unordered_map<uint8_t, int16_t>* map);
+        void loadOutgoingByResponse(std::unordered_map<uint8_t, int16_t>* map);
+        void loadIncomingByRequest(std::unordered_map<uint8_t, int16_t>* map);
 
         // Writing functions
         std::shared_ptr<MinBiTCore::Request> writeRequest(uint8_t header);
@@ -178,11 +179,11 @@ class MinBiTCore {
         std::mutex dataMutex;
 
         // Outgoing packet lengths by request header
-        std::unordered_map<uint8_t, int16_t> outgoingByRequest;
+        std::unordered_map<uint8_t, int16_t>* outgoingByRequest;
         // Outgoing packet legnths by response header
-        std::unordered_map<uint8_t, int16_t> outgoingByResponse;
+        std::unordered_map<uint8_t, int16_t>* outgoingByResponse;
         // Incoming packet lengths by request header
-        std::unordered_map<uint8_t, int16_t> incomingByRequest;
+        std::unordered_map<uint8_t, int16_t>* incomingByRequest;
 
         Endianness endianness = Endianness::BigEndian; // Default to BigEndian
         WriteMode writeMode = WriteMode::IMMEDIATE;

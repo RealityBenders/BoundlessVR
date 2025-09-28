@@ -7,6 +7,7 @@
 #include <memory>
 #include <Eigen/Dense>
 
+#include "FirmwarePacketLengths.h"
 #include "comms/MinBiTCore.h"
 #include "comms/MinBiTTcpServer.h"
 

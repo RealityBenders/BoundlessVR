@@ -59,20 +59,20 @@ EVRInitError ControllerDriver::Activate(uint32_t unObjectId)
     //uint64_t availableButtons = ButtonMaskFromId(k_EButton_SteamVR_Touchpad) |
     //    ButtonMaskFromId(k_EButton_IndexController_JoyStick);
     //VRProperties()->SetUint64Property(props, Prop_SupportedButtons_Uint64, availableButtons);
+    // Use a lambda to bind the member function
+    // In ControllerDriver.cpp
+    tcpServer.setInitHandler([](std::shared_ptr<MinBiTCore> protocol) {
+        // Load packet lengths from JSON file
+        protocol->loadIncomingByRequest(&incomingByRequest);
+    });
+    
+    tcpServer.setReadHandler([this](std::shared_ptr<MinBiTCore> protocol, std::shared_ptr<MinBiTCore::Request> request) {
+        this->firmwareReadHandler(protocol, request);
+    });
 
     if(!tcpServer.begin()){
         VRDriverLog()->Log("ControllerDriver: Failed to start TCP server.");
         return VRInitError_Driver_Failed;
-    }
-    // Get all protocol pointers from the server
-    protocols = tcpServer.getProtocols();
-    // Set up each protocol
-    for (auto& protocol : protocols) {
-        protocol->loadPacketLengthsFromJson("packet_lengths.json");
-        // Use a lambda to bind the member function
-        protocol->setReadHandler([this, protocol](std::shared_ptr<MinBiTCore::Request> request) {
-            this->firmwareReadHandler(protocol, request);
-        });
     }
     
     return VRInitError_None;
@@ -231,6 +231,7 @@ void ControllerDriver::firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol,
     //Reads serial packets
     switch (request->GetHeader()) {
         case PING: {
+			VRDriverLog()->Log("Ping received.");
             // Sends acknowledge
             protocol->writeByte(ACK);
             protocol->sendAll();
