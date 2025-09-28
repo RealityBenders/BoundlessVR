@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 89b1da73f5358e342b52375ab73da149
+timeCreated: 1439594070
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Loop/pf_vfx-inf_psys_demo_loop_firaga.prefab
+  uploadId: 235952

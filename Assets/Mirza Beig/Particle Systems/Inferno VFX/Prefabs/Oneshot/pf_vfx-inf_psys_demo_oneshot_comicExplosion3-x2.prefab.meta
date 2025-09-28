@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 045fd796ef4a1bb42bfcef7308acbeb1
+timeCreated: 1438490489
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Oneshot/pf_vfx-inf_psys_demo_oneshot_comicExplosion3-x2.prefab
+  uploadId: 235952

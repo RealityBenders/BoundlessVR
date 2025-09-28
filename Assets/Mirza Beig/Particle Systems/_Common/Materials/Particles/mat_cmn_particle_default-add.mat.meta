@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 94298b3310b609644996cb9a430b8168
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/_Common/Materials/Particles/mat_cmn_particle_default-add.mat
+  uploadId: 235952

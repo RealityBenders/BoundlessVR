@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b5ecc53330be6da4ea3b9b2138eed85f
+timeCreated: 1435550977
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Materials/Particles/Spritesheets/mat_vfx-inf_particle_spritesheet_hotCloud-colour-alpha-[1.0].mat
+  uploadId: 235952

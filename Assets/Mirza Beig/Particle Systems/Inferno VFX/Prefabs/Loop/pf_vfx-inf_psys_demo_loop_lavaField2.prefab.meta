@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e0b8bb2fdaecc9747bcf077933496391
+timeCreated: 1438490426
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Loop/pf_vfx-inf_psys_demo_loop_lavaField2.prefab
+  uploadId: 235952

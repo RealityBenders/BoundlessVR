@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: baf355be516e61f4c9240bce0287fb7b
+timeCreated: 1438490478
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Oneshot/pf_vfx-inf_psys_demo_oneshot_comicExplosion-x5.prefab
+  uploadId: 235952

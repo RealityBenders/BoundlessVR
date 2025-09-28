@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ed071b41320ca524dbcc38fb109666c3
+timeCreated: 1435544819
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Materials/Particles/Spritesheets/mat_vfx-inf_particle_spritesheet_glowBubbles-add-[2.0].mat
+  uploadId: 235952

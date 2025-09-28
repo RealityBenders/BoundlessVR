@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 42f09312a07995948980601c8901b6b8
+timeCreated: 1430608588
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36825
+  packageName: Fire & Spell Effects
+  packageVersion: 1.0.3
+  assetPath: Assets/PyroParticles/Demo/CratePhysicsMaterial.physicMaterial
+  uploadId: 500401

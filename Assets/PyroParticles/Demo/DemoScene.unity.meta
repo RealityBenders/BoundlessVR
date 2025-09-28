@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e07879828565e484da0c8c9e9a71d69f
+timeCreated: 1430409464
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36825
+  packageName: Fire & Spell Effects
+  packageVersion: 1.0.3
+  assetPath: Assets/PyroParticles/Demo/DemoScene.unity
+  uploadId: 500401

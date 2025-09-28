@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cb000036283a7b240807d4a9fa989069
+timeCreated: 1439595040
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Loop/pf_vfx-inf_psys_demo_loop_embryo.prefab
+  uploadId: 235952
