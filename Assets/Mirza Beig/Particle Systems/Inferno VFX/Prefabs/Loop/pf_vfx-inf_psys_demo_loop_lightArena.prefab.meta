@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4ddbe82e4b4b5804dab35f2f8914a76d
+timeCreated: 1438490395
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Loop/pf_vfx-inf_psys_demo_loop_lightArena.prefab
+  uploadId: 235952

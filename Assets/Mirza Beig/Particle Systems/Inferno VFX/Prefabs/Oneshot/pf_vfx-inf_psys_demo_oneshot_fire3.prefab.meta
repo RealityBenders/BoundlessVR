@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a88461c4688ac2e499c928197a43211c
+timeCreated: 1438490440
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Oneshot/pf_vfx-inf_psys_demo_oneshot_fire3.prefab
+  uploadId: 235952

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9d3900a299993c5478fe493791f599f8
+timeCreated: 1483952351
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/_Common/Prefabs/Lights/pf_template-cmn_light_point_st[ns].prefab
+  uploadId: 235952

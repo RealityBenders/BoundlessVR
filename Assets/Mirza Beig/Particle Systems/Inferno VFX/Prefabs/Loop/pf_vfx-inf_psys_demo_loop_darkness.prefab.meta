@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1f23c0c7f24bae34aaff1d4e8ca15264
+timeCreated: 1438490432
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Loop/pf_vfx-inf_psys_demo_loop_darkness.prefab
+  uploadId: 235952

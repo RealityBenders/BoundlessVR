@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fb2e7bf0028e0f54cb8031f480f3f33d
+timeCreated: 1439594958
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Loop/pf_vfx-inf_psys_demo_loop_smog2.prefab
+  uploadId: 235952

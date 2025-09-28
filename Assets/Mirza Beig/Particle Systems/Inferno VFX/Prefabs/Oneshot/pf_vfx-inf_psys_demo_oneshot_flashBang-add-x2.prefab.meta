@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c70008338b49b7f46bc19adc50b5afd0
+timeCreated: 1438490572
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Oneshot/pf_vfx-inf_psys_demo_oneshot_flashBang-add-x2.prefab
+  uploadId: 235952

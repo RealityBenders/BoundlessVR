@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - Anchor
+  - Fire
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

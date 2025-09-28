@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8876b2d03511be447898198decb279a4
+timeCreated: 1439834805
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Materials/Particles/Sprites/mat_vfx-inf_particle_sprite_wisp-alpha-[1.0].mat
+  uploadId: 235952

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a7ca23c838d67a144b25263168c33353
+timeCreated: 1438490376
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Loop/pf_vfx-inf_psys_demo_loop_flameThrower2.prefab
+  uploadId: 235952

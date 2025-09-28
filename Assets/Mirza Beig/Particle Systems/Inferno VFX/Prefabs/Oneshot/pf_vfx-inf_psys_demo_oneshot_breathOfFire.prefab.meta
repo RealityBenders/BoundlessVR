@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fdaa25090afb4f242806312977d4f495
+timeCreated: 1438490453
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Oneshot/pf_vfx-inf_psys_demo_oneshot_breathOfFire.prefab
+  uploadId: 235952

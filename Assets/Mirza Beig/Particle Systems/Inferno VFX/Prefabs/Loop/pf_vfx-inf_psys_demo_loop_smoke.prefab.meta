@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a11e3dbf2c19e104db8fdcc0a8d399fa
+timeCreated: 1448435872
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Prefabs/Loop/pf_vfx-inf_psys_demo_loop_smoke.prefab
+  uploadId: 235952

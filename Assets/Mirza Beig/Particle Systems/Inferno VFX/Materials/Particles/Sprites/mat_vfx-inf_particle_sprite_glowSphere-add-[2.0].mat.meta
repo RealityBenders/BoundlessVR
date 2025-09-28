@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3429dd8f43847754cb1e02dee4b7d81b
+timeCreated: 1435543657
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50735
+  packageName: Inferno VFX
+  packageVersion: 2.6.0
+  assetPath: Assets/Mirza Beig/Particle Systems/Inferno VFX/Materials/Particles/Sprites/mat_vfx-inf_particle_sprite_glowSphere-add-[2.0].mat
+  uploadId: 235952
