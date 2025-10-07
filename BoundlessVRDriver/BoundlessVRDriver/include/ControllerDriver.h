@@ -7,14 +7,14 @@
 #include <memory>
 #include <algorithm>
 #include <Eigen/Dense>
+#include <chrono>
 
 #include "FirmwarePacketLengths.h"
 #include "comms/MinBiTCore.h"
 #include "comms/MinBiTTcpServer.h"
 
 using namespace vr;
-
-using Request = std::shared_ptr<MinBiTCore::Request>;
+using namespace std::chrono;
 
 struct EigenPose {
     Eigen::Quaterniond rotation;
@@ -129,8 +129,9 @@ private:
     VRInputComponentHandle_t joystickXHandle;
     VRInputComponentHandle_t trackpadXHandle;
 
-    std::vector<std::shared_ptr<MinBiTCore>> protocols; // Changed from single protocol to vector
     MinBiTTcpServer tcpServer{"BoundlessVR Controller", 8080};
+
+	Timer sampleTime;
 
 	// Mutex for accessing imu data
 	std::mutex dataMutex;
@@ -153,5 +154,4 @@ private:
 
     HmdQuaternion_t ExtractQuaternionFromPose(HmdMatrix34_t matrix);
     HmdVector3_t ExtractPositionFromPose(HmdMatrix34_t matrix);
-    void firmwareReadHandler(std::shared_ptr<MinBiTCore> protocol, Request request);
 };

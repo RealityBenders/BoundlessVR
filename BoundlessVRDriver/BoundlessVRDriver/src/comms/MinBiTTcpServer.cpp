@@ -1,5 +1,7 @@
 #include "MinBiTTcpServer.h"
-#include <openvr_driver.h>
+
+
+using namespace vr;
 
 MinBiTTcpServer::MinBiTTcpServer(std::string name, unsigned short port)
     : name(name), listenPort(port)
@@ -115,8 +117,8 @@ void MinBiTTcpServer::end() {
     if (acceptor) acceptor->close();
     {
         std::lock_guard<std::mutex> lock(clientMutex);
-        for (auto& kv : clientStreams) {
-            if (kv.second && kv.second->isOpen()) kv.second->close();
+        for (auto& kv : clientSockets) {
+            if (kv && kv->is_open()) kv->close();
         }
     }
     ioContext.stop();
@@ -124,6 +126,5 @@ void MinBiTTcpServer::end() {
         if (t.joinable()) t.join();
     }
     workerThreads.clear();
-    clientStreams.clear();
-    clientProtocols.clear();
+    clientSockets.clear();
 }

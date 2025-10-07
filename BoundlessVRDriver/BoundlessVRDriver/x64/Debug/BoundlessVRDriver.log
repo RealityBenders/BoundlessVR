@@ -1,29 +1,21 @@
-﻿  ControllerDriver.cpp
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(12,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(13,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(14,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(126,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(127,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(128,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(129,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  DeviceFactory.cpp
-  DeviceProvider.cpp
-  MinBiTCore.cpp
-  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
-  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
-  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
-  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1129,5): warning MSB8027: Two or more files with the name of Timer.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are ..\..\..\Project-Touchstone\TouchstoneInterface\src\utils\Timer.cpp, src\Timer.cpp.
   MinBiTTcpServer.cpp
   Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
   - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
   - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
   Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
-C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTTcpServer.cpp(30,34): warning C4101: 'e': unreferenced local variable
-  TcpStream.cpp
-  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
-  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
-  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
-  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\comms\MinBiTTcpServer.cpp(32,34): warning C4101: 'e': unreferenced local variable
+  ControllerDriver.cpp
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(12,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(13,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(14,19): warning C4244: '=': conversion from 'const double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(139,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(140,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(141,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\BoundlessVRDriver\src\ControllerDriver.cpp(142,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  DeviceFactory.cpp
+  DeviceProvider.cpp
   Generating Code...
+x64\Debug\Timer.obj : warning LNK4042: object specified more than once; extras ignored
      Creating library C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.lib and object C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.exp
   BoundlessVRDriver.vcxproj -> C:\Users\carso\Documents\GitHub\BoundlessVR\BoundlessVRDriver\x64\Debug\BoundlessVRDriver.dll
