@@ -34,7 +34,8 @@
     <ClCompile Include="src\ControllerDriver.cpp" />
     <ClCompile Include="src\DeviceFactory.cpp" />
     <ClCompile Include="src\DeviceProvider.cpp" />
-    <ClCompile Include="src\Timer.cpp" />
+    <ClCompile Include="src\FirmwarePacketLengths.cpp" />
+    <ClCompile Include="src\packet_lengths.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\openvr_api.cs" />
@@ -44,7 +45,7 @@
     <None Include="resources\driver.vrdrivermanifest" />
     <None Include="resources\game_controller.svg" />
     <None Include="resources\legacy_bindings_boundlessvr.json" />
-    <None Include="src\packet_lengths.json" />
+    <None Include="src\FirmwarePacketLengths.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\openvr_api.lib" />
@@ -205,11 +206,5 @@
     <Error Condition="!Exists('..\packages\nlohmann.json.3.12.0\build\native\nlohmann.json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nlohmann.json.3.12.0\build\native\nlohmann.json.targets'))" />
     <Error Condition="!Exists('..\packages\Eigen3.3.3.9\build\native\Eigen3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Eigen3.3.3.9\build\native\Eigen3.targets'))" />
     <Error Condition="!Exists('..\packages\boost.1.87.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost.1.87.0\build\boost.targets'))" />
-  </Target>
-  <ItemGroup>
-    <JsonFile Include=".\src\packet_lengths.json" />
-  </ItemGroup>
-  <Target Name="CopyJsonFile" AfterTargets="Build">
-    <Copy SourceFiles="@(JsonFile)" DestinationFolder="$(OutDir)" />
   </Target>
 </Project>

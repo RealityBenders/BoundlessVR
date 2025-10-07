@@ -16,7 +16,8 @@ using StreamHandler = std::function<void(const boost::system::error_code&, std::
 
 class MinBiTTcpServer {
 public:
-    using ReadHandler = std::function<void(uint8_t* bytes)>;
+    using ReadHandler = std::function<void(std::shared_ptr<MinBiTCore>, std::shared_ptr<MinBiTCore::Request>)>;
+    using InitHandler = std::function<void(std::shared_ptr<MinBiTCore>)>;
 
     MinBiTTcpServer(std::string name, unsigned short port);
     ~MinBiTTcpServer();
@@ -30,6 +31,15 @@ public:
     // Set the user read handler
     void setReadHandler(ReadHandler handler);
 
+    // Set the initialization handler for new clients
+    void setInitHandler(InitHandler handler);
+
+    // Get all active protocols
+    std::vector<std::shared_ptr<MinBiTCore>> getProtocols();
+
+    // Check if any client is connected
+    bool isConnected();
+
 private:
     std::string name;
     boost::asio::io_context ioContext;
@@ -37,9 +47,10 @@ private:
 	std::vector<std::shared_ptr<boost::asio::ip::tcp::socket>> clientSockets;
     unsigned short listenPort;
     ReadHandler readHandler;
+    InitHandler initHandler;
     std::vector<std::thread> workerThreads;
     std::mutex clientMutex;
-    std::atomic<int> nextClientId{0};
+    std::atomic<int> nextClientId{ 0 };
     std::thread ioThread;
     bool running = false;
 

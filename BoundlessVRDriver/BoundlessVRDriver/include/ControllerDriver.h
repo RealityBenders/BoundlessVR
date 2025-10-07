@@ -9,7 +9,8 @@
 #include <Eigen/Dense>
 #include <chrono>
 
-#include "Timer.h"
+#include "FirmwarePacketLengths.h"
+#include "comms/MinBiTCore.h"
 #include "comms/MinBiTTcpServer.h"
 
 using namespace vr;
